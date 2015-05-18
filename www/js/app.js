@@ -83,6 +83,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     }
   })
+    .state('app.opretKost', {
+    url: '/opretKost',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/opret/opretKost.html',
+        controller: 'KostCtrl'
+      }
+    }
+  })
   .state('app.kost.drink', {
     url: '/drink',
     views: {
