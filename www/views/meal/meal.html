@@ -1,0 +1,34 @@
+<ion-view title="Kostregistrering">
+
+  <ion-nav-buttons side="right">      
+    <button 
+      class="button button-icon icon ion-more"
+      ng-click="notificationClick()">
+    </button>
+  </ion-nav-buttons>  
+
+  <ion-tabs class="tabs-icon-top">
+  
+  	<!-- Morgen Tab -->
+	  <ion-tab title="Morgen" icon-off="ion-fork" icon-on="ion-fork" href="#/meal/breakfast">
+	    <ion-nav-view name="meal-breakfast"></ion-nav-view>
+	  </ion-tab>
+	
+	  <!-- Middag Tab -->
+	  <ion-tab title="Frokost" icon-off="ion-knife" icon-on="ion-knife" href="#/meal/dinner">
+	    <ion-nav-view name="meal-dinner"></ion-nav-view>
+	  </ion-tab>
+
+	  <!-- Aften Tab -->
+	  <ion-tab title="Aften" icon-off="ion-pizza" icon-on="ion-pizza" href="#/meal/supper">
+	    <ion-nav-view name="meal-supper"></ion-nav-view>
+	 </ion-tab>
+	 
+	  <!-- Mellem Tab -->
+	  <ion-tab title="Mellemmåltid" icon-off="ion-spoon" icon-on="ion-spoon" href="#/meal/snack">
+	    <ion-nav-view name="meal-snack"></ion-nav-view>
+	  </ion-tab>
+	
+  </ion-tabs>
+  
+</ion-view>
