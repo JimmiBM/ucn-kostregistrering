@@ -3,29 +3,17 @@
     <div class="list list-inset">
       <label class="item item-input">
         <i class="icon ion-search placeholder-icon"></i>
-        <input type="text" placeholder="Søg">
+        <input type="text" placeholder="Søg" ng-model="mealSearch">
       </label>
     </div>
     <ul class="list">
       <li class="item item-divider">Frokost</li>
-      <li class="item">
-        <h2>1 stk franskbrød smurt</h2>
-      </li>
-      <li class="item">
-        <h2>1 stk rundstykke smurt</h2>
-      </li>
-      <li class="item">
-        <h2>1 pk kærgården</h2>
+      <li class="item" ng-repeat="meal in lunchList | filter:{ name: mealSearch }">
+        <h2>{{meal.name}}</h2>
       </li>
       <li class="item item-divider">Drikkevarer</li>
-      <li class="item">
-        <h2>1 stk franskbrød smurt</h2>
-      </li>
-      <li class="item">
-        <h2>1 stk rundstykke smurt</h2>
-      </li>
-      <li class="item">
-        <h2>1 pk kærgården</h2>
+      <li class="item" ng-repeat="drink in drinkList | filter:{ name: mealSearch }">
+        <h2>{{drink.name}}</h2>
       </li>
     </ul>
 	

@@ -33,7 +33,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
       url: '/breakfast',
       views: {
           'meal-breakfast': {
-          templateUrl: 'views/meal/breakfast.html'
+            controller: 'MealCtrl',
+            templateUrl: 'views/meal/breakfast.html'
         }
       }
     })
@@ -41,7 +42,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
       url: '/dinner',
       views: {
           'meal-dinner': {
-          templateUrl: 'views/meal/dinner.html'
+            controller: 'MealCtrl',
+            templateUrl: 'views/meal/dinner.html'
         }
       }
     })
@@ -49,7 +51,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
       url: '/supper',
       views: {
          'meal-supper': {
-          templateUrl: 'views/meal/supper.html'
+           controller: 'MealCtrl',
+           templateUrl: 'views/meal/supper.html'
         }
       }
     })
@@ -57,7 +60,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
       url: '/snack',
       views: {
           'meal-snack': {
-          templateUrl: 'views/meal/snack.html'
+            controller: 'MealCtrl',
+            templateUrl: 'views/meal/snack.html'
         }
       }
     });

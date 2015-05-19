@@ -1,6 +1,5 @@
 app.controller('UserCtrl', function ($scope, $rootScope, $timeout, $ionicModal, $ionicLoading, $ionicPopup, Users, $filter) {
 
-
   var createUser = function() {
     var newUser = Users.newUser();
     $scope.users.push(newUser);
@@ -42,7 +41,5 @@ app.controller('UserCtrl', function ($scope, $rootScope, $timeout, $ionicModal, 
   $scope.login = function() {
     loginUser($scope.data.SSN, $scope.data.password);
   }
-
-
 
 });
