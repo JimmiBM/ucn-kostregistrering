@@ -1,4 +1,4 @@
-angular.module('App').factory('Users', function() {
+app.factory('Users', function() {
   return {
     all: function() {
       var userString = window.localStorage['users'];
@@ -10,11 +10,13 @@ angular.module('App').factory('Users', function() {
     save: function(users) {
       window.localStorage['users'] = angular.toJson(users);
     },
-    newProject: function(projectTitle) {
-      // Add a new project
+    newUser: function() {
       return {
-        title: projectTitle,
-        tasks: []
+        cpr: 1111901213,
+        firstname: "Jens",
+        surname: "Jensen",
+        email: "jens@jensen.dk",
+        password: "123456"
       };
     },
     getLastActiveIndex: function() {
