@@ -12,12 +12,6 @@ Dette kræver at NodeJS er installeret og at du har en emulator iOS eller Androi
     ionic platform add android
     ionic emulate android
 
-For at køre i browseren
-    npm install -g ionic cordova
-    git clone https://github.com/JimmiBM/ucn-kostregistrering.git
-    cd ucn-kostregistrering
-    ionic serve
-
 # LICENSE
 
 Ionic is licensed under the MIT Open Source license. For more information, see the LICENSE file in this repository.
