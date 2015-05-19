@@ -1,20 +1,22 @@
-# Ionic Framework Demo App
+# Kostregistrerings applikation for Region Nordjylland
 
 This is a demo app built with the Ionic Framework that you can preview in the browser or clone and run locally on an emulator or device.
 
-# View it now
+# Kør selv
 
-https://ionic-in-action.github.io/ionic-demo-resort-app/www/
-
-# Run locally
-
-This assumes you already have an emulator setup for iOS or Android. Substitute `ios` for `android` below to use Android.
+Dette kræver at NodeJS er installeret og at du har en emulator iOS eller Android installeret. Skift 'android' til 'ios' for at bruge IOS.
 
     npm install -g ionic cordova
-    git clone https://github.com/ionic-in-action/ionic-demo-resort-app.git
-    cd ionic-demo-resort-app
-    ionic platform add ios
-    ionic emulate ios
+    git clone https://github.com/JimmiBM/ucn-kostregistrering.git
+    cd ucn-kostregistrering
+    ionic platform add android
+    ionic emulate android
+
+For at køre i browseren
+    npm install -g ionic cordova
+    git clone https://github.com/JimmiBM/ucn-kostregistrering.git
+    cd ucn-kostregistrering
+    ionic serve
 
 # LICENSE
 
