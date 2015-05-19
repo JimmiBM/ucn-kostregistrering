@@ -8,7 +8,7 @@
   </ion-nav-buttons> 
   
 
-  <ion-content>
+  <ion-content ng-controller="UserCtrl">
     <div class="list">
 	  <label class="item item-input item-stacked-label">
 	    <span class="input-label">Fornavn</span>
@@ -24,7 +24,7 @@
 	  </label>
 	  <label class="item item-input item-stacked-label">
 	    <span class="input-label">Email</span>
-	    <input type="text" placeholder="jensn@jensen.com">
+	    <input type="text" placeholder="jens@jensen.com">
 	  </label>
 	  <label class="item item-input item-stacked-label">
 	    <span class="input-label">Adgangskode</span>
@@ -33,6 +33,11 @@
     <button class="button button-full button-balanced">
       Gem ændringer
     </button>
+    
+    <ion-item collection-repeat="user in users" collection-item-height="52">
+     {{user.firstname}}
+     </ion-item>
+  
 	</div>
 
   </ion-content>

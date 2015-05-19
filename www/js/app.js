@@ -6,6 +6,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
       url: '/',
       templateUrl: 'views/home/home.html'
     })
+    .state('login', {
+      url: '/login',
+      controller: 'UserCtrl',
+      templateUrl: 'views/user/login.html'
+    })
     .state('nutrition', {
       url: '/myNutrition',
       templateUrl: 'views/nutrition/nutritions.html'
@@ -57,7 +62,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
       }
     });
 
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/login');
 })
 
 app.run(function($ionicPlatform, $location) {

@@ -1,4 +1,4 @@
-app.controller('UserCtrl', function ($scope, $timeout, $ionicModal, $ionicLoading, $ionicPopup) {
+app.controller('UserCtrl', function ($scope, $rootScope, $timeout, $ionicModal, $ionicLoading, $ionicPopup, Users) {
 
 
   var createUser = function() {
@@ -6,60 +6,38 @@ app.controller('UserCtrl', function ($scope, $timeout, $ionicModal, $ionicLoadin
     $scope.users.push(newUser);
     Users.save($scope.users);
     //$scope.selectUser(newUser, $scope.users.length-1);
-  }
+  };
 
+  //TODO: Ændre cpr til sin
+  var getUserBySSN = function(cpr) {
+      $filter('filter')($scope.users, {cpr: 1111901213})[0];
+  };
+  
+  var loginUser = function(ssn, password) {
+      var user = getUserBySSN(ssn);
+      if(user.password == password) {
+        //YAY
+      } else {
+        //FUCK NEJ!!!!
+      }
+  };
 
   // Load or initialize projects
   $scope.users = Users.all();
+  
+  // data from template
+  $scope.data = {};
 
-  // Grab the last active, or the first project
-  //$scope.activeProject = $scope.projects[Projects.getLastActiveIndex()];
-
-  // Called to create a new project
+ 
+  // Called to create a new user
   $scope.newUser = function() {
     createUser();
   };
-
-  // Called to select the given project
-  /*$scope.selectProject = function(project, index) {
-    $scope.activeProject = project;
-    Projects.setLastActiveIndex(index);
-    $ionicSideMenuDelegate.toggleLeft(false);
-  };*/
-
-  // Create our modal
-  /*$ionicModal.fromTemplateUrl('new-task.html', function(modal) {
-    $scope.taskModal = modal;
-  }, {
-    scope: $scope
-  });
-
-  $scope.createTask = function(task) {
-    if(!$scope.activeProject || !task) {
-      return;
-    }
-    $scope.activeProject.tasks.push({
-      title: task.title
-    });
-    $scope.taskModal.hide();
-
-    // Inefficient, but save all the projects
-    Projects.save($scope.projects);
-
-    task.title = "";
+  
+  // Called to get user by SIN
+  $scope.getUser = function(cpr) {
+    getUserBySSN(cpr);
   };
-
-  $scope.newTask = function() {
-    $scope.taskModal.show();
-  };
-
-  $scope.closeNewTask = function() {
-    $scope.taskModal.hide();
-  }
-
-  $scope.toggleProjects = function() {
-    $ionicSideMenuDelegate.toggleLeft();
-  };*/
 
 
 
