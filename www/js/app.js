@@ -64,6 +64,15 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'views/meal/snack.html'
         }
       }
+    })
+    .state('meal.drink', {
+      url: '/drink',
+      views: {
+         'meal-drink': {
+           controller: 'MealCtrl',
+           templateUrl: 'views/meal/drink.html'
+        }
+      }
     });
 
   $urlRouterProvider.otherwise('/');

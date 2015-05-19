@@ -11,10 +11,6 @@
       <li class="item" ng-repeat="meal in snackList | filter:{ name: mealSearch }">
         <h2>{{meal.name}}</h2>
       </li>
-      <li class="item item-divider">Drikkevarer</li>
-      <li class="item" ng-repeat="drink in drinkList | filter:{ name: mealSearch }">
-        <h2>{{drink.name}}</h2>
-      </li>
     </ul>
 	
   </ion-content>
