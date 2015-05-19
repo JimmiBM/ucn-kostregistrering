@@ -1,5 +1,4 @@
-app.controller('UserCtrl', function ($scope, $rootScope, $timeout, $ionicModal, $ionicLoading, $ionicPopup, Users, $filter) {
-
+app.controller('MealCtrl', function ($scope, $rootScope, $timeout, $ionicModal, $ionicLoading, $ionicPopup, Meals, $filter) {
 
   var createUser = function() {
     var newUser = Users.newUser();
@@ -42,7 +41,5 @@ app.controller('UserCtrl', function ($scope, $rootScope, $timeout, $ionicModal, 
   $scope.login = function() {
     loginUser($scope.data.SSN, $scope.data.password);
   }
-
-
 
 });

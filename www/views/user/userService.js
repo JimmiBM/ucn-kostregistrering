@@ -12,10 +12,10 @@ app.factory('Users', function() {
     },
     newUser: function() {
       return {
-        cpr: 1111901213,
-        firstname: "Jens",
-        surname: "Jensen",
-        email: "jens@jensen.dk",
+        cpr: 1111901214,
+        firstname: "Rasmus",
+        surname: "DIVA",
+        email: "divareaper@jensen.dk",
         password: "123456"
       };
     },

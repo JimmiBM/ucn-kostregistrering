@@ -8,7 +8,7 @@
         { "cat": "breakfast", "name": "1 skive 45+ ost", "energy": "270", "protein": "5,0" },
         { "cat": "breakfast", "name": "1 skive 30+ ost", "energy": "210", "protein": "6,0" },
         { "cat": "breakfast", "name": "1 port. smøreost", "energy": "210", "protein": "1,5" },
-		{ "cat": "breakfast", "name": "1 port. skimmelost", "energy": "210", "protein": "1,5" },
+		    { "cat": "breakfast", "name": "1 port. skimmelost", "energy": "210", "protein": "1,5" },
         { "cat": "breakfast", "name": "100 ml. havregrød", "energy": "420", "protein": "4,0" },
         { "cat": "breakfast", "name": "100 ml. øllebrød", "energy": "270", "protein": "1,0" },
         { "cat": "breakfast", "name": "1 spsk. piskefløde", "energy": "230", "protein": "0,5" },
@@ -101,6 +101,6 @@
 		{ "cat": "drink", "name": "100 ml. SmofKaniven central", "energy": "460", "protein": "5,0" },
 		{ "cat": "drink", "name": "100 ml. SmofKaniven perifer", "energy": "300", "protein": "3,0" },
 		{ "cat": "drink", "name": "500 ml. Glukose 10%", "energy": "840", "protein": "0" },
-		{ "cat": "drink", "name": "NaCl", "energy": "-", "protein": "-" },¨
+		{ "cat": "drink", "name": "NaCl", "energy": "-", "protein": "-" }
       ]
 }

@@ -30,15 +30,15 @@
 	    <span class="input-label">Adgangskode</span>
 	    <input type="password" placeholder="">
 	  </label>
-    <button class="button button-full button-balanced">
+    <button class="button button-full button-balanced" ng-click="newUser()">
       Gem ændringer
     </button>
     
     <ion-item collection-repeat="user in users" collection-item-height="52">
-     {{user.firstname}}
+     {{user.firstname}} - {{user.cpr}} - {{user.password}}
      </ion-item>
   
 	</div>
 
-  </ion-content>
+  </ion-content> 
 </ion-view>
