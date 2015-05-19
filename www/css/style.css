@@ -29,3 +29,9 @@ border-color: #993333;
 background-color: #993333;
 background-image: none;
 }
+
+.tabs-positive > .tabs, .tabs.tabs-positive {
+border-color: #993333;
+background-color: #993333;
+background-image: none;
+}

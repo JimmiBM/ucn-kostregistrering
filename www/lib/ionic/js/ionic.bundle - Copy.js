@@ -39359,7 +39359,7 @@ function($scope, scrollViewOptions, $timeout, $window, $$scrollValueCache, $loca
   });
 
   $timeout(function() {
-    scrollView && scrollView.run && scrollView.run();
+    scrollView.run();
   });
 
   this._rememberScrollId = null;
@@ -39374,7 +39374,7 @@ function($scope, scrollViewOptions, $timeout, $window, $$scrollValueCache, $loca
 
   this.resize = function() {
     return $timeout(resize).then(function() {
-      $element && $element.triggerHandler('scroll.resize');
+      $element.triggerHandler('scroll.resize');
     });
   };
 
@@ -39449,7 +39449,7 @@ function($scope, scrollViewOptions, $timeout, $window, $$scrollValueCache, $loca
     var values = $$scrollValueCache[this._rememberScrollId];
     if (values) {
       this.resize().then(function() {
-        scrollView && scrollView.scrollTo && scrollView.scrollTo(+values.left, +values.top, shouldAnimate);
+        scrollView.scrollTo(+values.left, +values.top, shouldAnimate);
       });
     }
   };

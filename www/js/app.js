@@ -90,7 +90,6 @@ app.run(function($ionicPlatform, $location) {
     }
   });
 
-
   //If first visit, insert standard db
   var firstVisit = localStorage.getItem('firstVisitKostReg');
   if (!firstVisit) {
