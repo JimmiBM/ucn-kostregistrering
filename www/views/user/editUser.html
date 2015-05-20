@@ -12,23 +12,23 @@
     <div class="list">
 	  <label class="item item-input item-stacked-label">
 	    <span class="input-label">Fornavn</span>
-	    <input type="text" placeholder="Jens">
+	    <input type="text" placeholder="Jens" value="{{ user.firstname }}">
 	  </label>
 	  <label class="item item-input item-stacked-label">
 	    <span class="input-label">Efternavn</span>
-	    <input type="text" placeholder="Jensen">
+	    <input type="text" placeholder="Jensen" value="{{ user.lastname }}">
 	  </label>
 	  <label class="item item-input item-stacked-label">
 	    <span class="input-label">CPR</span>
-	    <input type="text" placeholder="1111912525">
+	    <input type="text" placeholder="1111912525" value="{{ user.SSN }}">
 	  </label>
 	  <label class="item item-input item-stacked-label">
 	    <span class="input-label">Email</span>
-	    <input type="text" placeholder="jens@jensen.com">
+	    <input type="text" placeholder="jens@jensen.com" value="{{ user.email }}">
 	  </label>
 	  <label class="item item-input item-stacked-label">
 	    <span class="input-label">Adgangskode</span>
-	    <input type="password" placeholder="">
+	    <input type="password" placeholder=""value="{{ user.password }}">
 	  </label>
     <button class="button button-full button-balanced" ng-click="newUser()">
       Gem ændringer
