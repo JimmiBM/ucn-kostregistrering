@@ -10,7 +10,9 @@
     <ul class="list" > <!--ng-repeat="meal in meals" -->
       <li class="item item-divider">Morgenmad</li>
       <li class="item" ng-repeat="meal in breakfastList | filter:{ name: mealSearch }">
-        <h2>{{meal.name}}</h2>
+        <h2 style="font-weight:bold;">Navn: {{meal.name}}</h2>
+        <h2>Protein: {{meal.protein}}</h2>
+        <h2>kJ: {{meal.energy}}</h2>
       </li>
     </ul>
 	

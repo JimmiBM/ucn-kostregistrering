@@ -9,7 +9,9 @@
     <ul class="list">
       <li class="item item-divider">Mellemmåltid</li>
       <li class="item" ng-repeat="meal in snackList | filter:{ name: mealSearch }">
-        <h2>{{meal.name}}</h2>
+        <h2 style="font-weight:bold;">Navn: {{meal.name}}</h2>
+        <h2>Protein: {{meal.protein}}</h2>
+        <h2>kJ: {{meal.energy}}</h2>
       </li>
     </ul>
 	
