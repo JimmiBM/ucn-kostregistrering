@@ -1,19 +1,26 @@
 <ion-view title="Kostregistreringer" hide-nav-bar="true">
-<pane side-menu-content drag-content="false">
-  <ion-content ng-controller="UserCtrl">
-    <div class="list">
-  	  <label class="item item-input item-stacked-label">
-  	    <span class="input-label">CPR</span>
-  	    <input type="text" ng-model="data.SSN">
-  	  </label>
-  	  <label class="item item-input item-stacked-label">
-  	    <span class="input-label">Kode</span>
-  	    <input type="password" ng-model="data.password">
-  	  </label>
-  	  
-      <button class="button button-full button-balanced" ng-click="login()">
-        Login
-      </button> 
-  	</div>
+  <ion-content ng-controller="UserCtrl" >
+  <img src="img/logo.png" width="100%"/>
+    <div class="padding">
+      <div class="card">
+        <div class="item item-text-wrap">
+          For at kunne registrere din kost skal du logge ind med CPR nr og kodeord.
+        </div>
+      </div> 
+        <div class="list">
+          <label class="item item-input">
+            <span class="input-label">CPR:</span>
+            <input type="text" ng-model="data.SSN">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Kodeord:</span>
+            <input type="password" ng-model="data.password">
+          </label>
+          <button class="button button-block button-balanced" ng-click="login()">
+            Login
+          </button> 
+      	</div>
+    </div>
+   
   </ion-content>
 </ion-view> 
