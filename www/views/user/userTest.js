@@ -1,17 +1,22 @@
-describe('userCtrl', function() {
-  beforeEach(module('app'));
+describe('userCtrl', function()
+{
+  var scope;
+  // ny controller før hver test
+  beforeEach(angular.mock.module('app'));
+  beforeEach(angular.mock.module(function($rootScope, $controller) 
+  {
+    //tom scope
+    scope = $rootScope.$new();
+    // lav controlleren
+    $controller('userCtrl', {$scope: scope});
+  }
+    ));
 
-  var $controller;
-
-  beforeEach(inject(function(_$controller_){
-    // The injector unwraps the underscores (_) from around the parameter names when matching
-    $controller = _$controller_;
-  }));
-
-  describe('$scope.getUserBySSN', function() {
-    it('Tests if the SSN is Equal', function() {
-      var user = getUserBySSN(1111901213);
-      expect(user.SSN == 1111901213)
-    });
-  });
-});
+  //testen her
+  it('vi tester om det er det samme SSN nummer', function()
+  {
+    var bruger = scope.getUserBySSN(1234561111);
+    expect(bruger.SSN == 1234561111);
+  })
+}
+})
