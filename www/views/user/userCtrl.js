@@ -7,7 +7,7 @@ app.controller('UserCtrl', function ($scope, $rootScope, $timeout, $ionicModal, 
   
   var loginUser = function(ssn, password) {
       var user = getUserBySSN(ssn);
-      if(user.password == password) {
+      if(user.password === password) {
         window.localStorage['loggedInUser'] = angular.toJson(user);
         $window.location.href = '#/';
       } else {
