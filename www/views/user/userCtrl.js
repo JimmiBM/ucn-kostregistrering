@@ -1,6 +1,5 @@
-app.controller('UserCtrl', function ($scope, $rootScope, $timeout, $ionicModal, $ionicLoading, $ionicPopup, Users, $filter, $window) {
+app.controller('UserCtrl', function ($scope, $rootScope, $timeout, $ionicModal, $ionicLoading, $ionicPopup, Users, $filter, $window, $ionicSideMenuDelegate) {
 
-  //TODO: Ændre cpr til sin
   var getUserBySSN = function(cpr) {
       return $filter('filter')($scope.users, {SSN: cpr})[0];
   };
@@ -9,6 +8,7 @@ app.controller('UserCtrl', function ($scope, $rootScope, $timeout, $ionicModal, 
       var user = getUserBySSN(ssn);
       if(user.password === password) {
         window.localStorage['loggedInUser'] = angular.toJson(user);
+        $ionicSideMenuDelegate.canDragContent(true);
         $window.location.href = '#/';
       } else {
          $ionicPopup.show({
@@ -49,9 +49,17 @@ app.controller('UserCtrl', function ($scope, $rootScope, $timeout, $ionicModal, 
   
   $scope.login = function() {
     loginUser($scope.data.SSN, $scope.data.password);
-  }
+  };
 
   $scope.logout = function(){
     logoutUser();
-  }
+  };
+  
+ if(window.localStorage['loggedInUser']) {
+  	  $ionicSideMenuDelegate.canDragContent(true);
+  }else{
+  	  $ionicSideMenuDelegate.canDragContent(false);
+  } 
+  
+  
 });
