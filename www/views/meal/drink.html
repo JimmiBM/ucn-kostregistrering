@@ -9,9 +9,14 @@
     <ul class="list">
       <li class="item item-divider">Drikkevarer</li>
       <li class="item" ng-repeat="drink in drinkList | filter:{ name: mealSearch }">
+        <div class="amount"><h2>Antal: {{amount}}</h2>
+        <button ng-click="increment($amount);">+</button>
+        <button ng-click="decrement($amount);">-</button>
+        </div>
         <h2 style="font-weight:bold;">{{drink.name}}</h2>
         <h2>Protein: {{drink.protein}}</h2>
         <h2>kJ: {{drink.energy}}</h2>
+
       </li>
     </ul>
 	

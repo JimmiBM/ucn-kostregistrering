@@ -35,3 +35,11 @@ border-color: #993333;
 background-color: #993333;
 background-image: none;
 }
+.amount {
+  display: inline;
+  float:right;
+}
+button {
+  height:40px;
+  width:40px;
+}
