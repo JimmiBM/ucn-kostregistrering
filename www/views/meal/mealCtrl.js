@@ -28,7 +28,19 @@ app.controller('MealCtrl', function ($scope, $rootScope, $timeout, $ionicModal, 
     }       
    
   });
- 
- 
+  
+  // min and max for amount
+  $scope.amount = 0;
+  var min = 0;
+  var max = 100;
 
+  $scope.increment = function(amount) {
+    if ($scope.amount < max) { 
+    $scope.amount++;
+    }
+  };
+  $scope.decrement = function(amount) {
+    if ($scope.amount <= min) { return; }
+    $scope.amount--;
+  };
 });
