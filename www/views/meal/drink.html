@@ -9,7 +9,7 @@
     <ul class="list">
       <li class="item item-divider">Drikkevarer</li>
       <li class="item" ng-repeat="drink in drinkList | filter:{ name: mealSearch }">
-        <h2 style="font-weight:bold;">Navn: {{drink.name}}</h2>
+        <h2 style="font-weight:bold;">{{drink.name}}</h2>
         <h2>Protein: {{drink.protein}}</h2>
         <h2>kJ: {{drink.energy}}</h2>
       </li>
