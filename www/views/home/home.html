@@ -1,15 +1,15 @@
-<ion-view title="Startside">
+<ion-view title="Startside" ng-controller="HomeCtrl">
   <ion-content>
     <div class="card">
       <div class="item item-divider">Information</div>
       <div class="item item-text-wrap">
         <div class="row">
     			<div class="col-25">Navn:</div>
-    			<div class="col-75">{{ user.firstname }} {{user.lastname}}</div>
+    			<div class="col-75">{{ loggedInUser.firstname }} {{loggedInUser.surname}}</div>
     		</div>
     		<div class="row">
     			<div class="col-25">Cpr nr:</div>
-    			<div class="col-75">{{ user.SSN }}</div>
+    			<div class="col-75">{{ loggedInUser.SSN }}</div>
     		</div>
       </div>
     </div>

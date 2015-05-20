@@ -17,6 +17,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     })
     .state('settings', {
       url: '/settings',
+      controller: 'UserCtrl',
       templateUrl: 'views/settings/settings.html'
     })
     .state('edituser', {
@@ -93,6 +94,7 @@ app.run(function($ionicPlatform, $location) {
   //If first visit, insert standard db
   var firstVisit = localStorage.getItem('firstVisitKostReg');
   if (!firstVisit) {
+    console.log("First time!");
      var meals = [
         { "cat": "breakfast", "name": "1 stk. franskbrød smurt", "energy": "330", "protein": "2,5" },
         { "cat": "breakfast", "name": "1 stk. rundstykke smurt", "energy": "550", "protein": "6,5" },
@@ -197,10 +199,24 @@ app.run(function($ionicPlatform, $location) {
     		{ "cat": "drink", "name": "500 ml. Glukose 10%", "energy": "840", "protein": "0" },
     		{ "cat": "drink", "name": "NaCl", "energy": "-", "protein": "-" }
      ];  
+     
+     var users = [
+       {"SSN": "1234561111", "firstname": "Jimmi", "surname": "Noob", "email": "Jimmi@Noob.dk", "password": "divareaper"},
+       {"SSN": "2234561113", "firstname": "Henrik", "surname": "SkylderBurgers", "email": "Henrik@burgers.dk", "password": "burgers"},
+       {"SSN": "3234561115", "firstname": "Chrisian", "surname": "Kradse", "email": "Kradse@Schachner.dk", "password": "superlamas"},
+       {"SSN": "1234567890", "firstname": "Test", "surname": "Test", "email": "Test@Eksempel.dk", "password": "1234"}
+     ];
+     
+     window.localStorage['users'] = angular.toJson(users);
      window.localStorage['meals'] = angular.toJson(meals);
      localStorage.setItem('firstVisitKostReg', '1');
   }
-
+  
+  var userAppString = angular.fromJson(window.localStorage['loggedInUser']);
+  console.log(userAppString);
+  if(userAppString == undefined) {
+     $location.href = '#/login';
+  }
  
 })
 
