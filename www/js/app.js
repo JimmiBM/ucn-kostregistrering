@@ -76,7 +76,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
       }
     });
 
-  $urlRouterProvider.otherwise('/');
+  if(window.localStorage['loggedInUser']) {
+  	$urlRouterProvider.otherwise('/');
+  }else{
+  	$urlRouterProvider.otherwise('/login');
+  }
 })
 
 app.run(function($ionicPlatform, $location) {
@@ -210,12 +214,6 @@ app.run(function($ionicPlatform, $location) {
      window.localStorage['users'] = angular.toJson(users);
      window.localStorage['meals'] = angular.toJson(meals);
      localStorage.setItem('firstVisitKostReg', '1');
-  }
-  
-  var userAppString = angular.fromJson(window.localStorage['loggedInUser']);
-  console.log(userAppString);
-  if(userAppString == undefined) {
-     $location.href = '#/login';
   }
  
 })
