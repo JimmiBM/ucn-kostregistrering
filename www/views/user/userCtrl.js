@@ -44,7 +44,7 @@ app.controller('UserCtrl', function ($scope, $ionicPopup, Users, $filter, $windo
   
   // Called to get user by SIN
   $scope.getUser = function(cpr) {
-    getUserBySSN(cpr);
+    return getUserBySSN(cpr);
   };
   
   $scope.login = function() {

@@ -22,18 +22,22 @@ describe("UserCtrl", function() {
                 $window: $window,
                 $ionicSideMenuDelegate: $ionicSideMenuDelegate
                 
-        });
-    }));
-
-    it("should have a scope variable defined", function() {
-        expect(scope).toBeDefined();
-    });
+            });
+        }));
     
-    describe('JavaScript addition operator', function () {
-    it('adds two numbers together', function () {
-        expect(1 + 2).toEqual(4);
-    });
-});
+        it("should have a scope variable defined", function() {
+            expect(scope).toBeDefined();
+        });
+        
+    
+        it('adds two numbers together', function () {
+            expect(1 + 2).toEqual(3);
+        });
+        
+        it("should find the user with the correct SSN", function(){
+            expect(scope.getUser(1234567890)).not.toBe(null);
+        });
+
 
     /*it("should have a accounts array", function(){
         expect(scope.accounts.length).toBe(0);
