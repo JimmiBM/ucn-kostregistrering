@@ -1,4 +1,4 @@
-app.controller('UserCtrl', function ($scope, $rootScope, $timeout, $ionicModal, $ionicLoading, $ionicPopup, Users, $filter, $window, $ionicSideMenuDelegate) {
+app.controller('UserCtrl', function ($scope, $ionicPopup, Users, $filter, $window, $ionicSideMenuDelegate) {
 
   var getUserBySSN = function(cpr) {
       return $filter('filter')($scope.users, {SSN: cpr})[0];

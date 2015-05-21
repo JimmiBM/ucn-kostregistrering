@@ -1,5 +1,5 @@
-var app = angular.module('App', ['ionic', 'firebase']);
-
+var app = angular.module('App', ['ionic']);
+//var app = angular.module('App', ['ionic', 'firebase', 'ngRoute']);
 app.config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('home', {
