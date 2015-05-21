@@ -218,17 +218,6 @@ app.run(function($ionicPlatform, $location) {
  
 })
 
-app.factory('EventsService', function ($firebase) {
-  var firebase = new Firebase('https://ionic-in-action-demo.firebaseio.com/events');
-  var service = $firebase(firebase);
-  return service;
-})
-
-app.factory('MenuService', function ($firebase) {
-  var firebase = new Firebase('https://ionic-in-action-demo.firebaseio.com/menu');
-  var service = $firebase(firebase);
-  return service;
-})
 
 app.controller('NavbarCtrl', function ($scope, $ionicSideMenuDelegate) {
 
