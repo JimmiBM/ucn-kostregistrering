@@ -34,7 +34,7 @@ describe("UserCtrl", function() {
             expect(1 + 2).toEqual(3);
         });
         
-        it("should find the user with the correct SSN", function(){
+        it("should find a user by getUser()", function(){
             expect(scope.getUser(1234567890)).not.toBe(null);
         });
 
