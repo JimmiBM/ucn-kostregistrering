@@ -34,19 +34,27 @@ describe("UserCtrl", function() {
             expect(1 + 2).toEqual(3);
         });
         
-        it("should find a user by getUser()", function(){
-            expect(scope.getUser(1234567890)).not.toBe(null);
+        it("should find the user with the correct SSN", function(){
+            expect(scope.getUser(1234567890).SSN).toMatch("1234567890");
         });
+        
+//        it("When logging in with test user there should be a loggedInUser saved in local storage", function(){
+//            scope.data.SSN = 1234567890;
+//            scope.data.password = 1234;
+//            scope.login();
+//            expect(scope.loggedInUser).not.toBeDefined();
+//            expect(scope.loggedInUser.SSN).toMatch("1234567890");
+//        });
 
 
-    /*it("should have a accounts array", function(){
-        expect(scope.accounts.length).toBe(0);
+    it("There should be a users array containing at least 1 user", function(){
+        expect(scope.users.length).not.toBe(0);
     });
 
-    it("should have types setup", function(){
-        expect(scope.accountTypes.length).toBe(3);
-
-    });*/
+//    it("should have types setup", function(){
+//        expect(scope.accountTypes.length).toBe(3);
+//
+//    });
 
 });
 
