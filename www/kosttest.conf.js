@@ -28,7 +28,8 @@ module.exports = function(config) {
       '../www/views/user/*Test.js',
       '../www/views/home/homeCtrl.js',
       '../www/views/meal/mealService.js',
-      '../www/views/meal/mealCtrl.js'
+      '../www/views/meal/mealCtrl.js',
+      '../www/views/meal/*Test.js'
       
       //'**/*tests.js'
     ],
