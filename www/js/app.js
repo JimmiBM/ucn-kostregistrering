@@ -94,6 +94,8 @@ app.run(function($ionicPlatform, $location) {
       StatusBar.styleDefault();
     }
   });
+  
+  //window.localStorage.clear();
 
   //If first visit, insert standard db
   var firstVisit = localStorage.getItem('firstVisitKostReg');
@@ -211,8 +213,26 @@ app.run(function($ionicPlatform, $location) {
        {"SSN": "1234567890", "firstname": "Test", "surname": "Test", "email": "Test@Eksempel.dk", "password": "1234"}
      ];
      
-     window.localStorage['users'] = angular.toJson(users);
+     var registrations = [
+       {
+         "rID": 1,
+         "userSSN": 1234567890,
+         "title": "Tirsdag d. 26/05/2015",
+         "meals": [ 
+           { "mID": 1, "cat": "breakfast", "name": "1 stk. franskbrød smurt", "energy": "330", "protein": "2,5", "amount": 100  },
+           { "mID": 2, "cat": "drink", "name": "175 ml. sødmælk", "energy": "460", "protein": "6,0", "amount": 80 },
+           { "mID": 3, "cat": "lunch", "name": "100 ml. suppe, legeret", "energy": "300", "protein": "3,0", "amount": 90 },
+           { "mID": 4, "cat": "drink", "name": "175 ml. vand", "energy": "0", "protein": "0", "amount": 70 },
+           { "mID": 5, "cat": "dinner", "name": "1 port. hovedret, medium", "energy": "1300", "protein": "15,0", "amount": 80 },
+           { "mID": 6, "cat": "drink", "name": "175 ml. saftevand uden sukker", "energy": "0", "protein": "0", "amount": 100 }
+         ]
+       }
+
+     ];
+         
      window.localStorage['meals'] = angular.toJson(meals);
+     window.localStorage['users'] = angular.toJson(users);
+     window.localStorage['registrations'] = angular.toJson(registrations);
      localStorage.setItem('firstVisitKostReg', '1');
   }
  
@@ -225,3 +245,4 @@ app.controller('NavbarCtrl', function ($scope, $ionicSideMenuDelegate) {
     $ionicSideMenuDelegate.toggleLeft();
   };
 });
+

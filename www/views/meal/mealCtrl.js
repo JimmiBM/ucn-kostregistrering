@@ -54,3 +54,18 @@ app.controller('MealCtrl', function ($scope, $rootScope, $ionicModal, $ionicLoad
     $scope.amount--;
   };
 });
+
+app.controller('RegistrationCtrl', function ($scope, $rootScope, $ionicModal, $ionicLoading, $ionicPopup, Meals, Registrations, $filter) {
+
+  // Load or initialize projects
+  $scope.registrations = Registrations.all(); 
+  
+  var getRegistration = function(ID) {
+      return $filter('filter')($scope.registrations, {rID: ID})[0];
+  };
+  
+  $scope.getRegistrationByID = function(ID) {
+    return getRegistration(ID);
+  };
+  
+});
