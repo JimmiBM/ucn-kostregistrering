@@ -1,4 +1,4 @@
-app.controller('MealCtrl', function ($scope, $rootScope, $timeout, $ionicModal, $ionicLoading, $ionicPopup, Meals, $filter) {
+app.controller('MealCtrl', function ($scope, $rootScope, $ionicModal, $ionicLoading, $ionicPopup, Meals, $filter) {
 
   // Load or initialize projects
   $scope.meals = Meals.all();
