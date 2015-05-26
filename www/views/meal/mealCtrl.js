@@ -48,33 +48,14 @@ app.controller('MealCtrl', function ($scope, $rootScope, $ionicModal, $ionicLoad
 app.controller('RegistrationCtrl', function ($scope, $rootScope, $ionicModal, $ionicLoading, $ionicPopup, Meals, Registrations, $filter) {
 
   // Load or initialize projects
-  $scope.registrations = Registrations.all();
-
-  //
-  $scope.breakfastList = [];
-  $scope.lunchList = [];
-  $scope.dinnerList = [];
-  $scope.snackList = [];
-  $scope.drinkList = [];
-
-  $scope.meals.forEach(function(meal) {
-    if(meal.cat == "breakfast"){
-      $scope.breakfastList.push(meal);
-    }
-    if(meal.cat == "lunch"){
-      $scope.lunchList.push(meal);
-    }
-    if(meal.cat == "dinner"){
-      $scope.dinnerList.push(meal);
-    }
-    if(meal.cat == "snack"){
-      $scope.snackList.push(meal);
-    }
-    if(meal.cat == "drink"){
-      $scope.drinkList.push(meal);
-    }       
-   
-  });
+  $scope.registrations = Registrations.all(); 
   
+  var getRegistration = function(ID) {
+      return $filter('filter')($scope.registrations, {rID: ID})[0];
+  };
+  
+  $scope.getRegistrationByID = function(ID) {
+    return getRegistration(ID);
+  };
   
 });
