@@ -35,7 +35,7 @@ describe("MealCtrl", function() {
         });
         
     
-        it('adds two numbers together', function () {
+        it('adds two numbers together ', function () {
             expect(1 + 2).toEqual(3);
         });
         
