@@ -14,3 +14,20 @@ app.factory('Meals', function() {
   
   };
 });
+
+app.factory('Registrations', function() {
+  return {
+    all: function() {
+      var registrationString = window.localStorage['registrations'];
+      if(registrationString) {
+        return angular.fromJson(registrationString);
+      }
+      return [];
+    },
+    save: function(registrations) {
+      window.localStorage['registrations'] = angular.toJson(registrations);
+    }
+   
+  
+  };
+});
