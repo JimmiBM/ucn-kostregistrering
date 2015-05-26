@@ -13,6 +13,7 @@ describe("UserCtrl", function() {
         $ionicSideMenuDelegate) {
 
             scope = $rootScope.$new();  
+            
         
             controller = $controller('UserCtrl', {
                 $scope: scope,
@@ -41,13 +42,15 @@ describe("UserCtrl", function() {
         expect(scope.getUser(1234567890).SSN).toMatch("1234567890");
     });
         
-//        it("When logging in with test user there should be a loggedInUser saved in local storage", function(){
-//            scope.data.SSN = 1234567890;
-//            scope.data.password = 1234;
-//            scope.login();
-//            expect(scope.loggedInUser).not.toBeDefined();
-//            expect(scope.loggedInUser.SSN).toMatch("1234567890");
-//        });
+    it("When logging in with test user there should be a loggedInUser saved in local storage", function(){
+        scope.data = {
+            SSN: '1234567890',
+            password: '1234'
+        };
+
+        scope.login();
+        expect(angular.fromJson(window.localStorage['loggedInUser']).SSN).toMatch("1234567890");
+    }); 
 
 //    it("should have types setup", function(){
 //        expect(scope.accountTypes.length).toBe(3);
