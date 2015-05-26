@@ -45,7 +45,7 @@ app.controller('MealCtrl', function ($scope, $rootScope, $ionicModal, $ionicLoad
   };
 });
 
-app.controller('RegistrationCtrl', function ($scope, $rootScope, $ionicModal, $ionicLoading, $ionicPopup, Meals, $filter) {
+app.controller('RegistrationCtrl', function ($scope, $rootScope, $ionicModal, $ionicLoading, $ionicPopup, Meals, Registrations, $filter) {
 
   // Load or initialize projects
   $scope.registrations = Registrations.all();

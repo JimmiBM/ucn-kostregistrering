@@ -211,6 +211,15 @@ app.run(function($ionicPlatform, $location) {
        {"SSN": "1234567890", "firstname": "Test", "surname": "Test", "email": "Test@Eksempel.dk", "password": "1234"}
      ];
      
+     var registrations = [
+       {
+         "id": 1,
+         "userSSN": 1234567890,
+         "title": "Tirsdag d. 26/05/2015"
+       }
+
+     ];
+     
      window.localStorage['users'] = angular.toJson(users);
      window.localStorage['meals'] = angular.toJson(meals);
      localStorage.setItem('firstVisitKostReg', '1');
