@@ -1,4 +1,4 @@
-describe("MealCtrl", function() {
+describe("RegistrationCtrl", function() {
 
     var scope, controller;
     beforeEach(module('App'));
@@ -16,7 +16,7 @@ describe("MealCtrl", function() {
 
             scope = $rootScope.$new();  
         
-            controller = $controller('MealCtrl', {
+            controller = $controller('RegistrationCtrl', {
                 $scope: scope,
                 $rootScope: $rootScope,
                 $ionicModal: $ionicModal,
@@ -35,7 +35,7 @@ describe("MealCtrl", function() {
     });
     
     it("should have at least one registration", function(){
-        expect(scope.Registrations.length).not.toEqual(0);
+        expect(scope.registrations.length).not.toEqual(0);
     });
     
     it("should be able to find a registered meal from id", function(){
@@ -49,5 +49,7 @@ describe("MealCtrl", function() {
         scope.createRegistration();
         expect(scope.getRegistrationByID(scope.Regisrations.All.count-1).userSSN).toEqual(1234567890);
     });
+    
+//    it("should be able to change amount");
 });
 
