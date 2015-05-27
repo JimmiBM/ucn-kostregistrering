@@ -29,6 +29,14 @@ app.controller('MealCtrl', function ($scope, $rootScope, $ionicModal, $ionicLoad
    
   });
   
+  var getMeal = function(ID) {
+      return $filter('filter')($scope.meals, {id: ID})[0];
+  };
+  
+  $scope.getMealByID = function(ID) {
+    return getMeal(ID);
+  };
+  
   $scope.openRegs = function(){
     $ionicModal.fromTemplateUrl('views/meal/kostregistrering.html', {
       scope: $scope,
@@ -38,6 +46,38 @@ app.controller('MealCtrl', function ($scope, $rootScope, $ionicModal, $ionicLoad
       $scope.modal.show();
     });
   };
+  
+});
+
+app.controller('RegistrationCtrl', function ($scope, $rootScope, $ionicModal, $ionicLoading, $ionicPopup, Meals, Registrations, $filter) {
+
+  $scope.meals = Meals.all();
+  $scope.registrations = Registrations.all(); 
+  
+  var getMeal = function(ID) {
+      return $filter('filter')($scope.meals, {id: ID})[0];
+  };
+  
+  var getRegistration = function(ID) {
+      return $filter('filter')($scope.registrations, {rID: ID})[0];
+  };
+  
+  $scope.getRegistrationByID = function(ID) {
+    return getRegistration(ID);
+  };
+  
+  $scope.registration = getRegistration(1);
+  
+  $scope.addMealToRegistration = function(regID, mealID) {
+    
+    var registration = getRegistration(regID);
+    var meal = getMeal(mealID);
+    meal.amount = 0;
+    meal.mID = registration.meals.length+1;
+    registration.meals.push(angular.copy(meal));
+    Registrations.save($scope.registrations);
+  };
+ 
   
   // min and max for amount
   $scope.amount = 0;
@@ -53,19 +93,7 @@ app.controller('MealCtrl', function ($scope, $rootScope, $ionicModal, $ionicLoad
     if ($scope.amount <= min) { return; }
     $scope.amount--;
   };
-});
-
-app.controller('RegistrationCtrl', function ($scope, $rootScope, $ionicModal, $ionicLoading, $ionicPopup, Meals, Registrations, $filter) {
-
-  // Load or initialize projects
-  $scope.registrations = Registrations.all(); 
   
-  var getRegistration = function(ID) {
-      return $filter('filter')($scope.registrations, {rID: ID})[0];
-  };
   
-  $scope.getRegistrationByID = function(ID) {
-    return getRegistration(ID);
-  };
   
 });
