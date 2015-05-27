@@ -1,23 +1,71 @@
-<ion-modal-view>
+<ion-modal-view >
   <ion-header-bar class="bar-dark">
-    <div class="buttons">
-      <button class="button button-clear" ng-click="cancelPreview()">Anuller</button>
-    </div>
-    <h1 class="title">Kostregistrering</h1>
-    <div class="buttons">
-      <button class="button button-clear" ng-if="order.items.length" ng-click="sendOrder()">Indsend</button>
-    </div>
+  
+      <button class="button-icon icon ion-close-round" ng-click="cancelReg()"></button>
+    
+    <h1 class="title">Tilføjede</h1>
+   
+      <button class="button button-clear" ng-if="registration.meals.length" ng-click="saveRegistration({{registration.rID}})">Gem</button>
+    
   </ion-header-bar>
   <ion-content>
-    <ion-list>
+    <ul class="list" > <!--ng-repeat="meal in meals" -->
+      <li class="item item-divider">Morgenmad</li>
+      <li class="item" ng-repeat="meal in registration.meals | filter: { cat: 'breakfast' }">
+        <div class="amount">
+        </div>
+        <h2 style="font-weight:bold;">{{meal.name}} <span style="float:right"><a ng-click="removeMealFromRegistration({{meal.mID}})" href="">FJERN</a></span></h2>
+        <div class="item range ">
+          Spist ca.: <input type="range" name="rangeSlider" min="0" max="100" value="{{meal.amount}}" step="25" ng-model="meal.amount"> 
+            {{meal.amount}} %
+             
+        </div>
+        
+      </li>
+      
+      <li class="item item-divider">Frokost</li>
+      <li class="item" ng-repeat="meal in registration.meals | filter: { cat: 'lunch' }">
+        <div class="amount">
+        </div>
+        <h2 style="font-weight:bold;">{{meal.name}} <span style="float:right"><a ng-click="removeMealFromRegistration({{meal.mID}})" href="">FJERN</a></span></h2>
+        <div class="item range ">
+          Spist ca.: <input type="range" name="rangeSlider" min="0" max="100" value="{{meal.amount}}" step="25" ng-model="meal.amount"> 
+            {{meal.amount}} %
+        </div>
+      </li>
+      
+      <li class="item item-divider">Aftensmad</li>
+      <li class="item" ng-repeat="meal in registration.meals | filter: { cat: 'dinner' }">
+        <div class="amount">
+        </div>
+        <h2 style="font-weight:bold;">{{meal.name}} <span style="float:right"><a ng-click="removeMealFromRegistration({{meal.mID}})" href="">FJERN</a></span></h2>
+        <div class="item range ">
+          Spist ca.: <input type="range" name="rangeSlider" min="0" max="100" value="{{meal.amount}}" step="25" ng-model="meal.amount"> 
+            {{meal.amount}} %
+        </div>
+      </li>
+      
+      <li class="item item-divider">Mellemmåltid</li>
+      <li class="item" ng-repeat="meal in registration.meals | filter: { cat: 'snack' }">
+        <div class="amount">
+        </div>
+        <h2 style="font-weight:bold;">{{meal.name}} <span style="float:right"><a ng-click="removeMealFromRegistration({{meal.mID}})" href="">FJERN</a></span></h2>
+        <div class="item range ">
+          Spist ca.: <input type="range" name="rangeSlider" min="0" max="100" value="{{meal.amount}}" step="25" ng-model="meal.amount"> 
+            {{meal.amount}} %
+        </div>
+      </li>
       
       <li class="item item-divider">Drikkevarer</li>
-      <div class="amount"><h2>Antal: 2</h2>        
+      <li class="item" ng-repeat="meal in registration.meals | filter: { cat: 'drink' }">
+        <div class="amount">
         </div>
-        <h2 style="font-weight:bold;">Sodavand</h2>
-        <h2>Protein: 50</h2>
-        <h2>kJ: 100</h2>
-        <ion-option-button class="button-assertive" ng-click="remove($index)">Remove</ion-option-button>
-      </ion-item>
-    </ion-list>
+        <h2 style="font-weight:bold;">{{meal.name}} <span style="float:right"><a ng-click="removeMealFromRegistration({{meal.mID}})" href="">FJERN</a></span></h2>
+        <div class="item range ">
+          Drukket ca.: <input type="range" name="rangeSlider" min="0" max="100" value="{{meal.amount}}" step="25" ng-model="meal.amount"> 
+            {{meal.amount}} %
+        </div>
+      </li>
+      
+    </ul>
 </ion-modal-view>

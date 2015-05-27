@@ -36,8 +36,9 @@ background-color: #993333;
 background-image: none;
 }
 .amount {
-  display: inline;
+  display: center;
   float:right;
+  margin-top:5%
 }
 button {
   height:40px;

@@ -37,16 +37,7 @@ app.controller('MealCtrl', function ($scope, $rootScope, $ionicModal, $ionicLoad
     return getMeal(ID);
   };
   
-  $scope.openRegs = function(){
-    $ionicModal.fromTemplateUrl('views/meal/kostregistrering.html', {
-      scope: $scope,
-      animation: 'slide-in-up'
-    }).then(function(modal) {
-      $scope.modal = modal;
-      $scope.modal.show();
-    });
-  };
-  
+    
 });
 
 app.controller('RegistrationCtrl', function ($scope, $rootScope, $ionicModal, $ionicLoading, $ionicPopup, Meals, Registrations, $filter) {
@@ -76,24 +67,37 @@ app.controller('RegistrationCtrl', function ($scope, $rootScope, $ionicModal, $i
     meal.mID = registration.meals.length+1;
     registration.meals.push(angular.copy(meal));
     Registrations.save($scope.registrations);
+    $ionicLoading.show({ template: 'Tilføjet', noBackdrop: true, duration: 1500 });
+  };
+  
+  $scope.removeMealFromRegistration = function(id) {  
+    for(var i = $scope.registration.meals.length - 1; i >= 0; i--) {
+      if($scope.registration.meals[i].mID == id) {
+         $scope.registration.meals.splice(i, 1);
+      }
+    } 
+  };
+  
+  $scope.saveRegistration = function(regID) {  
+    var registration = getRegistration(regID);
+    Registrations.save($scope.registrations);
   };
  
-  
-  // min and max for amount
-  $scope.amount = 0;
-  var min = 0;
-  var max = 100;
-
-  $scope.increment = function(amount) {
-    if ($scope.amount < max) { 
-    $scope.amount++;
-    }
-  };
-  $scope.decrement = function(amount) {
-    if ($scope.amount <= min) { return; }
-    $scope.amount--;
+  $scope.openRegs = function(){
+    $ionicModal.fromTemplateUrl('views/meal/kostregistrering.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.modal = modal;
+      $scope.modal.show();
+    });
   };
   
+  $scope.cancelReg = function () {
+    $scope.modal.hide();
+  };
+  
+ 
   
   
 });
