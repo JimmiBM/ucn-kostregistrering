@@ -29,6 +29,16 @@ app.controller('MealCtrl', function ($scope, $rootScope, $ionicModal, $ionicLoad
    
   });
   
+  $scope.openRegs = function(){
+    $ionicModal.fromTemplateUrl('views/meal/kostregistrering.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.modal = modal;
+      $scope.modal.show();
+    });
+  };
+  
   // min and max for amount
   $scope.amount = 0;
   var min = 0;

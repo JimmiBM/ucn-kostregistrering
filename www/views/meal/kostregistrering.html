@@ -1,0 +1,23 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-dark">
+    <div class="buttons">
+      <button class="button button-clear" ng-click="cancelPreview()">Anuller</button>
+    </div>
+    <h1 class="title">Kostregistrering</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-if="order.items.length" ng-click="sendOrder()">Indsend</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <ion-list>
+      
+      <li class="item item-divider">Drikkevarer</li>
+      <div class="amount"><h2>Antal: 2</h2>        
+        </div>
+        <h2 style="font-weight:bold;">Sodavand</h2>
+        <h2>Protein: 50</h2>
+        <h2>kJ: 100</h2>
+        <ion-option-button class="button-assertive" ng-click="remove($index)">Remove</ion-option-button>
+      </ion-item>
+    </ion-list>
+</ion-modal-view>
