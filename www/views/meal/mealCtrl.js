@@ -59,6 +59,9 @@ app.controller('RegistrationCtrl', function ($scope, $rootScope, $ionicModal, $i
       return $filter('filter')($scope.registrations, {userSSN: parseInt(SSN)});
   };
   
+  $scope.loggedInUserRegistrations = $scope.getRegistrationUser($scope.loggedInUser.SSN);
+  
+  
   $scope.getRegistrationByID = function(ID) {
     return getRegistration(ID);
   };
