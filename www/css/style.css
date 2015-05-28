@@ -38,7 +38,7 @@ background-image: none;
 .amount {
   display: center;
   float:right;
-  margin-top:1%
+  margin-top:15px;
 }
 button {
   height:40px;

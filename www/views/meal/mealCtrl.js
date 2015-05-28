@@ -90,6 +90,7 @@ app.controller('RegistrationCtrl', function ($scope, $rootScope, $ionicModal, $i
   $scope.saveRegistration = function(regID) {  
     var registration = getRegistration(regID);
     Registrations.save($scope.registrations);
+    $scope.modal.hide();
   };
  
   $scope.openRegs = function(){
