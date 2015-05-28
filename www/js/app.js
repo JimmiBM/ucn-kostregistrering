@@ -229,10 +229,199 @@ app.run(function($ionicPlatform, $location) {
        }
 
      ];
+
+    var breakfastRecommendations = [
+    {
+      "recID": 1,
+      "totalProtein": 32,
+      "meals": [
+        { "id": 2, "cat": "breakfast", "name": "1 stk. rundstykke smurt", "energy": 550, "protein": 6.5 },
+        { "id": 2, "cat": "breakfast", "name": "1 stk. rundstykke smurt", "energy": 550, "protein": 6.5 },
+        { "id": 7, "cat": "breakfast", "name": "1 skive 30+ ost", "energy": 210, "protein": 6 },
+        { "id": 24, "cat": "breakfast", "name": "1 port. marmelade", "energy": 170, "protein": 0 },
+        { "id": 23, "cat": "breakfast", "name": "100 ml. Cheasy yoghurt", "energy": 190, "protein": 4 },
+        { "id": 55, "cat": "snack", "name": "1 spsk. nøddemix", "energy": 710, "protein": 3 },
+        { "id": 66, "cat": "drink", "name": "175 ml. minimælk", "energy": 300, "protein": 6 }       
+    ]},
+    { 
+      "recID": 2,
+      "totalProtein": 32.5,
+      "meals": [ 
+        { "id": 17, "cat": "breakfast", "name": "1 dl. havregryn", "energy": 500, "protein": 4 },
+        { "id": 17, "cat": "breakfast", "name": "1 dl. havregryn", "energy": 500, "protein": 4 },
+        { "id": 17, "cat": "breakfast", "name": "1 dl. havregryn", "energy": 500, "protein": 4 },
+        { "id": 21, "cat": "breakfast", "name": "100 ml. yoghurt", "energy": 380, "protein": 3 },
+        { "id": 21, "cat": "breakfast", "name": "100 ml. yoghurt", "energy": 380, "protein": 3 },
+        { "id": 21, "cat": "breakfast", "name": "100 ml. yoghurt", "energy": 380, "protein": 3 },
+        { "id": 2, "cat": "breakfast", "name": "1 stk. rundstykke smurt", "energy": 550, "protein": 6.5 }, 
+        { "id": 6, "cat": "breakfast", "name": "1 skive 45+ ost", "energy": 270, "protein": 5 }
+    ]},
+    {
+      "recID": 3,
+      "totalProtein": 32.5,
+      "meals": [ 
+        {"id": 10, "cat": "breakfast", "name": "100ml havregrød", "energy": 330, "protein": 2.5 },
+        {"id": 10, "cat": "breakfast", "name": "100ml havregrød", "energy": 330, "protein": 2.5 },
+        {"id": 170, "cat": "drink", "name": "175ml skummet mælk", "energy": 250, "protein": 6},
+        {"id": 2, "cat": "breakfast", "name": "1 stk. rundstykke, smurt", "energy": 550, "protein": 6.5},
+        {"id": 111, "cat": "breakfast", "name": "1 skive 30+ ost", "energy": 210, "protein": 6},
+        {"id": 55, "cat": "snack", "name": "1 spsk. nøddemix", "energy": 710, "protein": 3},
+        {"id": 55, "cat": "snack", "name": "1 spsk. nøddemix", "energy": 710, "protein": 3}
+    ]},
+    {
+      "recID": 4,
+      "totalProtein": 31,
+      "meals": [ 
+        { "id": 69, "cat": "drink", "name": "175 ml. kakaoskummetmælk", "energy": 420, "protein": 6 },
+        { "id": 2, "cat": "breakfast", "name": "1 stk. rundstykke smurt", "energy": 550, "protein": 6.5 },
+        { "id": 2, "cat": "breakfast", "name": "1 stk. rundstykke smurt", "energy": 550, "protein": 6.5 },
+        { "id": 7, "cat": "breakfast", "name": "1 skive 30+ ost", "energy": 210, "protein": 6 },
+        { "id": 7, "cat": "breakfast", "name": "1 skive 30+ ost", "energy": 210, "protein": 6 }
+    ]}];
+    
+    var lunchRecommendations = [
+    {
+      "recID": 1,
+      "totalProtein": 33.5,
+      "meals": [ 
+        { "id": 28, "cat": "lunch", "name": "1 port. lun ret", "energy": 750, "protein": 6.5 },
+        { "id": 34, "cat": "lunch", "name": "Pålæg til 1/2 stk. brød", "energy": 170, "protein": 4 },
+        { "id": 34, "cat": "lunch", "name": "Pålæg til 1/2 stk. brød", "energy": 170, "protein": 4 },
+        { "id": 29, "cat": "lunch", "name": "1/2 stk. rugbrød", "energy": 210, "protein": 1.5 },
+        { "id": 29, "cat": "lunch", "name": "1/2 stk. rugbrød", "energy": 210, "protein": 1.5 },
+        { "id": 84, "cat": "drink", "name": "200 ml. Fresubin jucy drink", "energy": 1260, "protein": 8 },
+        { "id": 84, "cat": "drink", "name": "200 ml. Fresubin jucy drink", "energy": 1260, "protein": 8 }
+    ]},
+    {
+    "recID": 2,
+    "totalProtein": 32,
+    "meals": [ 
+      { "id": 27, "cat": "lunch", "name": "100 ml. suppe, legeret", "energy": 300, "protein": 3 },
+      { "id": 31, "cat": "lunch", "name": "1 stk grovbrød", "energy": 340, "protein": 2.5 },
+      { "id": 30, "cat": "lunch", "name": "1 stk franskbrød", "energy": 340, "protein": 2.5 },
+      { "id": 32, "cat": "lunch", "name": "1 pk. kærgården", "energy": 315, "protein": 0 },
+      { "id": 34, "cat": "lunch", "name": "Pålæg til 1/2 stk. brød", "energy": 170, "protein": 4 },
+      { "id": 34, "cat": "lunch", "name": "Pålæg til 1/2 stk. brød", "energy": 170, "protein": 4 },
+      { "id": 84, "cat": "drink", "name": "200 ml. Fresubin jucy drink", "energy": 1260, "protein": 8 },
+      { "id": 84, "cat": "drink", "name": "200 ml. Fresubin jucy drink", "energy": 1260, "protein": 8 }
+    ]},
+    {
+      "recID": 3,
+      "totalProtein": 33,
+      "meals": [ 
+        { "id": 31, "cat": "lunch", "name": "1 stk grovbrød", "energy": 340, "protein": 2.5 },
+        { "id": 1, "cat": "breakfast", "name": "1 stk. franskbrød smurt", "energy": 330, "protein": 2.5 },
+        { "id": 34, "cat": "lunch", "name": "Pålæg til 1/2 stk. brød", "energy": 170, "protein": 4 },
+        { "id": 34, "cat": "lunch", "name": "Pålæg til 1/2 stk. brød", "energy": 170, "protein": 4 },
+        { "id": 34, "cat": "lunch", "name": "Pålæg til 1/2 stk. brød", "energy": 170, "protein": 4 },
+        { "id": 34, "cat": "lunch", "name": "Pålæg til 1/2 stk. brød", "energy": 170, "protein": 4 },
+        { "id": 67, "cat": "drink", "name": "175 ml. skummetmælk", "energy": 250, "protein": 6 },
+        { "id": 67, "cat": "drink", "name": "175 ml. skummetmælk", "energy": 250, "protein": 6 }
+    ]},
+    {
+      "recID": 4,
+      "totalProtein": 33,
+      "meals": [ 
+        { "id": 28, "cat": "lunch", "name": "1 port. lun ret", "energy": 750, "protein": 6.5 },
+        { "id": 28, "cat": "lunch", "name": "1 port. lun ret", "energy": 750, "protein": 6.5 },
+        { "id": 94, "cat": "drink", "name": "500 ml. Fresubin original fiber", "energy": 2100, "protein": 20 }
+    ]},
+    {
+      "recID": 5,
+      "totalProtein": 32,
+      "meals": [ 
+        { "id": 26, "cat": "lunch", "name": "100 ml. suppe, klar", "energy": 150, "protein": 1.5 },
+        { "id": 93, "cat": "drink", "name": "500 ml. Fresubin energi fiber", "energy": 3150, "protein": 30 },
+        { "id": 36, "cat": "lunch", "name": "1 port. salat", "energy": 130, "protein": 0.5 }
+    ]}];
+    
+    var dinnerRecommendations = [
+    {
+    "recID": 1,
+    "totalProtein": 30,
+    "meals": [ 
+      {"id": 41,"cat": "dinner","name": "1 port. hovedret, normal", "energy": 1900, "protein": 20 },
+      { "id": 43, "cat": "dinner", "name": "1 stk. frisk frugt", "energy": 230, "protein": 1 },
+      { "id": 42, "cat": "dinner", "name": "1 port. dessert", "energy": 1300, "protein": 7 },
+      { "id": 55, "cat": "snack", "name": "1 spsk. nøddemix", "energy": 710, "protein": 3 },
+      { "id": 69, "cat": "drink", "name": "175 ml. kakaoskummetmælk", "energy": 420, "protein": 6 }
+    ]},
+    {
+      "recID": 2,
+      "totalProtein": 30,
+      "meals": [ 
+        { "id": 40, "cat": "dinner", "name": "1 port. hovedret, medium", "energy": 1300, "protein": 15 },
+        { "id": 43, "cat": "dinner", "name": "1 stk. frisk frugt", "energy": 230, "protein": 1 },
+        { "id": 43, "cat": "dinner", "name": "1 stk. frisk frugt", "energy": 230, "protein": 1 },
+        { "id": 42, "cat": "dinner", "name": "1 port. dessert", "energy": 1300, "protein": 7 },
+        { "id": 69, "cat": "drink", "name": "175 ml. kakaoskummetmælk", "energy": 420, "protein": 6 }
+    ]},
+    {
+      "recID": 3,
+      "totalProtein": 16,
+      "meals": [ 
+        { "id": 39, "cat": "dinner", "name": "1 port. hovedret, lille", "energy": 630, "protein": 7 },
+        { "id": 43, "cat": "dinner", "name": "1 stk. frisk frugt", "energy": 230, "protein": 1 },
+        { "id": 43, "cat": "dinner", "name": "1 stk. frisk frugt", "energy": 230, "protein": 1 },
+        { "id": 43, "cat": "dinner", "name": "1 stk. frisk frugt", "energy": 230, "protein": 1 },
+        { "id": 66, "cat": "drink", "name": "175 ml. minimælk", "energy": 300, "protein": 6 }
+    ]},
+    {
+      "recID": 4,
+      "totalProtein": 28,
+      "meals": [ 
+        { "id": 41, "cat": "dinner", "name": "1 port. hovedret, normal", "energy": 1900, "protein": 20 },
+        { "id": 42, "cat": "dinner", "name": "1 port. dessert", "energy": 1300, "protein": 7 },
+        { "id": 70, "cat": "drink", "name": "175 ml. juice", "energy": 340, "protein": 1 }
+    ]}];
+    
+    var snackRecommendations = [
+    {
+      "recID": 1,
+      "totalProtein": 32,
+      "meals": [
+        { "id": 48, "cat": "snack", "name": "1 stk. brød med ost", "energy": 710, "protein": 7 },
+        { "id": 66, "cat": "drink", "name": "175 ml. minimælk", "energy": 300, "protein": 6 },
+    ]},
+    {
+      "recID": 2,
+      "totalProtein": 8,
+      "meals": [ 
+        { "id": 47, "cat": "snack", "name": "1 stk. brød med marmelade", "energy": 680, "protein": 2 },
+        { "id": 69, "cat": "drink", "name": "175 ml. kakaoskummetmælk", "energy": 420, "protein": 6 }
+    ]},
+    {
+      "recID": 3,
+      "totalProtein": 6,
+      "meals": [ 
+        { "id": 61, "cat": "snack", "name": "1 port. fromage eller trifli", "energy": 1050, "protein": 6 }
+    ]},
+    {
+      "recID": 4,
+	  "totalProtein": 15,
+      "meals": [ 
+        { "id": 64, "cat": "snack", "name": "1 burgerbolle med fyld", "energy": 1260, "protein": 15 },
+        { "id": 71, "cat": "drink", "name": "175 ml. sodavand med sukker", "energy": 300, "protein": 0 }
+    ]},
+    {
+      "recID": 5,
+	  "totalProtein": 20,
+      "meals": [ 
+        { "id": 87, "cat": "drink", "name": "200 ml. F protein energi drink", "energy": 1260, "protein": 20 },
+    ]}];
+
+
+
          
      window.localStorage['meals'] = angular.toJson(meals);
      window.localStorage['users'] = angular.toJson(users);
      window.localStorage['registrations'] = angular.toJson(registrations);
+     window.localStorage['breakfastRecommendations'] = angular.toJson(breakfastRecommendations);
+     window.localStorage['lunchRecommendations'] = angular.toJson(lunchRecommendations);
+     window.localStorage['dinnerRecommendations'] = angular.toJson(dinnerRecommendations);
+     window.localStorage['snackRecommendations'] = angular.toJson(snackRecommendations);
+
+
      localStorage.setItem('firstVisitKostReg', '1');
   }
  
