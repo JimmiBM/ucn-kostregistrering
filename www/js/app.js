@@ -1,4 +1,4 @@
-var app = angular.module('App', ['ionic']);
+var app = angular.module('App', ['ionic', 'ui.router']);
 //var app = angular.module('App', ['ionic', 'firebase', 'ngRoute']);
 app.config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider

@@ -41,7 +41,7 @@ app.controller('MealCtrl', function ($scope, $rootScope, $ionicModal, $ionicLoad
     
 });
 
-app.controller('RegistrationCtrl', function ($scope, $rootScope, $ionicModal, $ionicLoading, $ionicPopup, Meals, Registrations, $filter) {
+app.controller('RegistrationCtrl', function ($scope, $rootScope, $ionicModal, $ionicLoading, $ionicPopup, Meals, Registrations, $filter, $location, $state) {
 
   $scope.meals = Meals.all();
   $scope.registrations = Registrations.all(); 
@@ -66,7 +66,7 @@ app.controller('RegistrationCtrl', function ($scope, $rootScope, $ionicModal, $i
     return getRegistration(ID);
   };
   
-  $scope.registration = getRegistration(1);
+  $scope.registration = $scope.getRegistrationByID(window.localStorage['chosenRegID']); 
   
   $scope.addMealToRegistration = function(regID, mealID) {
     
@@ -76,7 +76,7 @@ app.controller('RegistrationCtrl', function ($scope, $rootScope, $ionicModal, $i
     meal.mID = registration.meals.length+1;
     registration.meals.push(angular.copy(meal));
     Registrations.save($scope.registrations);
-    $ionicLoading.show({ template: 'Tilføjet', noBackdrop: true, duration: 1500 });
+    $ionicLoading.show({ template: 'Tilføjet', noBackdrop: true, duration: 400 });
   };
   
   $scope.removeMealFromRegistration = function(id) {  
@@ -119,16 +119,15 @@ app.controller('RegistrationCtrl', function ($scope, $rootScope, $ionicModal, $i
     var isThereOneForToday = false;
     if(usersRegistrations.length > 0) {
         for(var i = usersRegistrations.length - 1; i >= 0; i--) {
-          console.log(usersRegistrations[i].date)
-          if(usersRegistrations[i].title = title) {
+          if(usersRegistrations[i].title == title) {
             //Der er oprettet, send videre
-            console.log("Send videre. Du har en for i dag");
             isThereOneForToday = true;
+            
+            window.localStorage['chosenRegID'] = angular.toJson(usersRegistrations[i].rID);           
+            $location.path("/meal/breakfast");
+            
             break;
-          }else {
-            //Der er ikke oprettet, opret en og send videre
-            console.log("Der er ikke oprettet en, opret nu");
-          } //endif            
+          }           
         } //endfor
       
     }
@@ -144,17 +143,17 @@ app.controller('RegistrationCtrl', function ($scope, $rootScope, $ionicModal, $i
           "meals": []
         };
       
-
-      console.log(newRegistration);
-      
-      $scope.registrations.push(angular.copy(newRegistration));
-      console.log($scope.registrations);
-      
+      $scope.registrations.push(angular.copy(newRegistration));      
       Registrations.save($scope.registrations);
-    }else{
-      //send, er oprettet
+      window.localStorage['chosenRegID'] = angular.toJson(newRegistration.rID);    
+      $location.path("/meal/breakfast");
     }
     
+  };
+  
+  $scope.goToReg = function(rID) {
+    window.localStorage['chosenRegID'] = angular.toJson(rID);    
+      $location.path("/meal/breakfast");
   };
  
   
