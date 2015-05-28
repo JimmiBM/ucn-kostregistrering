@@ -398,12 +398,14 @@ app.run(function($ionicPlatform, $location) {
     ]},
     {
       "recID": 4,
+	  "totalProtein": 15,
       "meals": [ 
         { "id": 64, "cat": "snack", "name": "1 burgerbolle med fyld", "energy": 1260, "protein": 15 },
         { "id": 71, "cat": "drink", "name": "175 ml. sodavand med sukker", "energy": 300, "protein": 0 }
     ]},
     {
       "recID": 5,
+	  "totalProtein": 20,
       "meals": [ 
         { "id": 87, "cat": "drink", "name": "200 ml. F protein energi drink", "energy": 1260, "protein": 20 },
     ]}];
