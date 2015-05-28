@@ -2,6 +2,7 @@ app.controller('MealCtrl', function ($scope, $rootScope, $ionicModal, $ionicLoad
 
   // Load or initialize projects
   $scope.meals = Meals.all();
+  $scope.loggedInUser = angular.fromJson(window.localStorage['loggedInUser']);
 
   //
   $scope.breakfastList = [];
@@ -44,6 +45,7 @@ app.controller('RegistrationCtrl', function ($scope, $rootScope, $ionicModal, $i
 
   $scope.meals = Meals.all();
   $scope.registrations = Registrations.all(); 
+  $scope.loggedInUser = angular.fromJson(window.localStorage['loggedInUser']); 
   
   var getMeal = function(ID) {
       return $filter('filter')($scope.meals, {id: ID})[0];
@@ -51,6 +53,10 @@ app.controller('RegistrationCtrl', function ($scope, $rootScope, $ionicModal, $i
   
   var getRegistration = function(ID) {
       return $filter('filter')($scope.registrations, {rID: ID})[0];
+  };
+  
+  $scope.getRegistrationUser = function(SSN) {
+      return $filter('filter')($scope.registrations, {userSSN: parseInt(SSN)});
   };
   
   $scope.getRegistrationByID = function(ID) {
@@ -97,6 +103,56 @@ app.controller('RegistrationCtrl', function ($scope, $rootScope, $ionicModal, $i
     $scope.modal.hide();
   };
   
+  $scope.checkToCreateReg = function () {
+    var today = new Date();
+    var weekday=new Array("Søndag","Mandag","Tirsdag","Onsdag","Torsdag","Fredag","Lørdag");
+    var monthname=new Array("Januar","Februar","Marts","April","Maj","Juni","Juli","August","September","October","November","December");
+    var userSSN = $scope.loggedInUser.SSN;
+    var title = weekday[today.getDay()] + " d. " + today.getDate() + ". " + monthname[today.getMonth()] + " " + today.getFullYear();
+    
+    var usersRegistrations = $scope.getRegistrationUser(userSSN);
+
+    
+    var isThereOneForToday = false;
+    if(usersRegistrations.length > 0) {
+        for(var i = usersRegistrations.length - 1; i >= 0; i--) {
+          console.log(usersRegistrations[i].date)
+          if(usersRegistrations[i].title = title) {
+            //Der er oprettet, send videre
+            console.log("Send videre. Du har en for i dag");
+            isThereOneForToday = true;
+            break;
+          }else {
+            //Der er ikke oprettet, opret en og send videre
+            console.log("Der er ikke oprettet en, opret nu");
+          } //endif            
+        } //endfor
+      
+    }
+    
+    if(!isThereOneForToday) {
+      //opret så send
+      var newRegistration = 
+        { 
+          "rID": $scope.registrations.length+1, 
+          "userSSN": parseInt(userSSN),
+          "title": weekday[today.getDay()] + " d. " + today.getDate() + ". " + monthname[today.getMonth()] + " " + today.getFullYear(),
+          "date": today,
+          "meals": []
+        };
+      
+
+      console.log(newRegistration);
+      
+      $scope.registrations.push(angular.copy(newRegistration));
+      console.log($scope.registrations);
+      
+      Registrations.save($scope.registrations);
+    }else{
+      //send, er oprettet
+    }
+    
+  };
  
   
   
