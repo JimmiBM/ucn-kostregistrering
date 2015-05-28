@@ -43,11 +43,10 @@ describe("RegistrationCtrl", function() {
     });
     
     it("should be able to register a meal registration", function(){
-        scope.data = {};
-        scope.data.userSSN = 1234567890;
+        var loggedInUserSSN = 1234567890;
         
         scope.createRegistration();
-        expect(scope.getRegistrationByID(scope.Regisrations.All.count-1).userSSN).toEqual(1234567890);
+        expect(scope.getRegistrationByID(scope.Regisrations.All.count-1).userSSN).toEqual(loggedInUserSSN);
     });
     
 //    it("should be able to change amount");
