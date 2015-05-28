@@ -215,20 +215,45 @@ app.run(function($ionicPlatform, $location) {
      
      var registrations = [
        {
-         "rID": 1,
-         "userSSN": 1234567890,
-         "title": "Tirsdag d. 26/05/2015",
-         "meals": [ 
-           { "mID": 1, "id": 1, "cat": "breakfast", "name": "1 stk. franskbrød smurt", "energy": "330", "protein": "2,5", "amount": 100  },
-           { "mID": 2, "id": 65, "cat": "drink", "name": "175 ml. sødmælk", "energy": "460", "protein": "6,0", "amount": 80 },
-           { "mID": 3, "id": 26, "cat": "lunch", "name": "100 ml. suppe, legeret", "energy": "300", "protein": "3,0", "amount": 90 },
-           { "mID": 4, "id": 77, "cat": "drink", "name": "175 ml. vand", "energy": "0", "protein": "0", "amount": 70 },
-           { "mID": 5, "id": 40, "cat": "dinner", "name": "1 port. hovedret, medium", "energy": "1300", "protein": "15,0", "amount": 80 },
-           { "mID": 6, "id": 82, "cat": "drink", "name": "175 ml. saftevand uden sukker", "energy": "0", "protein": "0", "amount": 100 }
+         "rID":1,
+         "userSSN":123434345,
+         "title":"Tirsdag d. 26/05/2015",
+         "date":"Thu May 28 2015 10:02:58 GMT+0200 (Romance Summer Time)",
+         "meals":[
+           {"mID":1,"id":1,"cat":"breakfast","name":"1 stk. franskbrød smurt","energy":"330","protein":"2,5","amount":100},
+           {"mID":2,"id":65,"cat":"drink","name":"175 ml. sødmælk","energy":"460","protein":"6,0","amount":75},
+           {"mID":3,"id":26,"cat":"lunch","name":"100 ml. suppe, legeret","energy":"300","protein":"3,0","amount":100},
+           {"mID":4,"id":77,"cat":"drink","name":"175 ml. vand","energy":"0","protein":"0","amount":70},
+           {"mID":5,"id":40,"cat":"dinner","name":"1 port. hovedret, medium","energy":"1300","protein":"15,0","amount":80},
+           {"mID":6,"id":82,"cat":"drink","name":"175 ml. saftevand uden sukker","energy":"0","protein":"0","amount":100}
+           ]
+         },
+       {
+         "rID":2,
+         "userSSN":1234567890,
+         "title":"Mandag d. 25. Maj 2015",
+         "date":"2015-05-25T09:31:47.222Z",
+         "meals":[
+           {"mID":1,"id":1,"cat":"breakfast","name":"1 stk. franskbrød smurt","energy":"330","protein":"2,5","amount":100},
+           {"mID":2,"id":65,"cat":"drink","name":"175 ml. sødmælk","energy":"460","protein":"6,0","amount":75},
+           {"mID":3,"id":26,"cat":"lunch","name":"100 ml. suppe, legeret","energy":"300","protein":"3,0","amount":100}
          ]
+       },
+       {
+         "rID":3,
+         "userSSN":1234567890,
+         "title":"Tirsdag d. 26. Maj 2015",
+         "date":"2015-05-26T09:31:47.222Z",
+         "meals":[]
+       },
+       {
+         "rID":4,
+         "userSSN":1234567890,
+         "title":"Onsdag d. 27. Maj 2015",
+         "date":"2015-05-27T09:31:47.222Z",
+         "meals":[]
        }
-
-     ];
+   ];
 
     var breakfastRecommendations = [
     {
