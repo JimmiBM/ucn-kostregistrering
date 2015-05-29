@@ -74,7 +74,7 @@ app.controller('RegistrationCtrl', function ($scope, $rootScope, $ionicModal, $i
     var meal = getMeal(mealID);
     meal.amount = 0;
     meal.mID = registration.meals.length+1;
-    registration.meals.push(angular.copy(meal));
+    registration.meals.push(meal);
     Registrations.save($scope.registrations);
     $ionicLoading.show({ template: 'Tilføjet', noBackdrop: true, duration: 400 });
   };
