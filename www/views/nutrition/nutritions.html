@@ -11,7 +11,7 @@
       	</div>
       <li class="item" ng-show="!loggedInUserRegistrations.length">Der er ingen registreringer endnu</li>
         <li style="list-style: none" ng-repeat="reg in loggedInUserRegistrations | filter:{ userSSN: loggedInUser.SSN } | orderBy: '-rID'">
-          <a class="item item-icon-right" href="#/meal/breakfast/{{reg.rID}}">
+          <a class="item item-icon-right" ng-click="goToReg({{reg.rID}})" href="#">
             {{ reg.title }}
             <i class="icon ion-arrow-right-c"></i>
           </a>

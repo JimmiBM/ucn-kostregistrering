@@ -1,4 +1,4 @@
-var app = angular.module('App', ['ionic']);
+var app = angular.module('App', ['ionic', 'ui.router']);
 //var app = angular.module('App', ['ionic', 'firebase', 'ngRoute']);
 app.config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider
@@ -110,7 +110,7 @@ app.run(function($ionicPlatform, $location) {
         { "id": 6, "cat": "breakfast", "name": "1 skive 45+ ost", "energy": 270, "protein": 5 },
         { "id": 7, "cat": "breakfast", "name": "1 skive 30+ ost", "energy": 210, "protein": 6 },
         { "id": 8, "cat": "breakfast", "name": "1 port. smøreost", "energy": 210, "protein": 1.5 },
-		    { "id": 9, "cat": "breakfast", "name": "1 port. skimmelost", "energy": 210, "protein": 1.5 },
+		{ "id": 9, "cat": "breakfast", "name": "1 port. skimmelost", "energy": 210, "protein": 1.5 },
         { "id": 10, "cat": "breakfast", "name": "100 ml. havregrød", "energy": 420, "protein": 4 },
         { "id": 12, "cat": "breakfast", "name": "100 ml. øllebrød", "energy": 270, "protein": 1 },
         { "id": 13, "cat": "breakfast", "name": "1 spsk. piskefløde", "energy": 230, "protein": 0.5 },
@@ -165,45 +165,45 @@ app.run(function($ionicPlatform, $location) {
         { "id": 62, "cat": "snack", "name": "1 spsk. piskefløde", "energy": 230, "protein": 0.5 },
         { "id": 63, "cat": "snack", "name": "1 spsk. flødeskum", "energy": 230, "protein": 0.5 },
         { "id": 64, "cat": "snack", "name": "1 burgerbolle med fyld", "energy": 1260, "protein": 15 },
-    		{ "id": 65, "cat": "drink", "name": "175 ml. sødmælk", "energy": 460, "protein": 6 },
-    		{ "id": 66, "cat": "drink", "name": "175 ml. minimælk", "energy": 300, "protein": 6 },
-    		{ "id": 67, "cat": "drink", "name": "175 ml. skummetmælk", "energy": 250, "protein": 6 },
-    		{ "id": 68, "cat": "drink", "name": "175 ml. kærnemælk", "energy": 250, "protein": 6 },
-    		{ "id": 69, "cat": "drink", "name": "175 ml. kakaoskummetmælk", "energy": 420, "protein": 6 },
-    		{ "id": 70, "cat": "drink", "name": "175 ml. juice", "energy": 340, "protein": 1 },
-    		{ "id": 71, "cat": "drink", "name": "175 ml. sodavand med sukker", "energy": 300, "protein": 0 },
-    		{ "id": 72, "cat": "drink", "name": "175 ml. saftevand med sukker", "energy": 300, "protein": 0 },
-    		{ "id": 73, "cat": "drink", "name": "175 ml. lys øl", "energy": 250, "protein": 0.2 },
-    		{ "id": 74, "cat": "drink", "name": "175 ml. hvidtøl", "energy": 250, "protein": 0.2 },
-    		{ "id": 75, "cat": "drink", "name": "50 ml. piskefløde 38% fedt", "energy": 750, "protein": 1 },
-    		{ "id": 76, "cat": "drink", "name": "50 ml. kaffefløde 9% fedt", "energy": 230, "protein": 1.5 },
-    		{ "id": 77, "cat": "drink", "name": "175 ml. vand", "energy": 0, "protein": 0 },
-    		{ "id": 78, "cat": "drink", "name": "175 ml. danskvand", "energy": 0, "protein": 0 },
-    		{ "id": 79, "cat": "drink", "name": "175 ml. kaffe", "energy": 0, "protein": 0 },
-    		{ "id": 80, "cat": "drink", "name": "175 ml. te", "energy": 0, "protein": 0 },
-    		{ "id": 81, "cat": "drink", "name": "175 ml. sodavand uden sukker", "energy": 0, "protein": 0 },
-    		{ "id": 82, "cat": "drink", "name": "175 ml. saftevand uden sukker", "energy": 0, "protein": 0 },
-    		{ "id": 83, "cat": "drink", "name": "100 ml. Glukose 20%", "energy": 340, "protein": 0 },
-    		{ "id": 84, "cat": "drink", "name": "200 ml. Fresubin jucy drink", "energy": 1260, "protein": 8 },
-    		{ "id": 85, "cat": "drink", "name": "200 ml. Fresubin energi drink", "energy": 1260, "protein": 10 },
-    		{ "id": 86, "cat": "drink", "name": "125 ml. Nutridrink Compact", "energy": 1260, "protein": 12 },
-    		{ "id": 87, "cat": "drink", "name": "200 ml. F protein energi drink", "energy": 1260, "protein": 20 },
-    		{ "id": 88, "cat": "drink", "name": "200 ml. Fresubin 2 kcal drink", "energy": 1680, "protein": 20 },
-    		{ "id": 89, "cat": "drink", "name": "175 ml. Arla Protin med sukker", "energy": 880, "protein": 10 },
-    		{ "id": 90, "cat": "drink", "name": "125 ml. Fresubin yocrème", "energy": 800, "protein": 9.5 },
-    		{ "id": 91, "cat": "drink", "name": "500 ml. Fresubin HP energi", "energy": 3150, "protein": 40 },
-    		{ "id": 92, "cat": "drink", "name": "1000 ml. Fresubin complete", "energy": 5040, "protein": 60 },
-    		{ "id": 93, "cat": "drink", "name": "500 ml. Fresubin energi fiber", "energy": 3150, "protein": 30 },
-    		{ "id": 94, "cat": "drink", "name": "500 ml. Fresubin original fiber", "energy": 2100, "protein": 20 },
-    		{ "id": 95, "cat": "drink", "name": "500 ml. Isosource mix", "energy": 2100, "protein": 22 },
-    		{ "id": 96, "cat": "drink", "name": "500 ml. Survimed OPD", "energy": 2100, "protein": 23 },
-    		{ "id": 97, "cat": "drink", "name": "500 ml. Nutrison low sodium", "energy": 2100, "protein": 20 },
-    		{ "id": 98, "cat": "drink", "name": "500 ml. Nutrison concentrated", "energy": 4200, "protein": 40 },
-    		{ "id": 99, "cat": "drink", "name": "500 ml. Glukose 20%", "energy": 1680, "protein": 0 },
-    		{ "id": 100, "cat": "drink", "name": "100 ml. SmofKaniven central", "energy": 460, "protein": 5 },
-    		{ "id": 101, "cat": "drink", "name": "100 ml. SmofKaniven perifer", "energy": 300, "protein": 3 },
-    		{ "id": 102, "cat": "drink", "name": "500 ml. Glukose 10%", "energy": 840, "protein": 0 },
-    		{ "id": 103, "cat": "drink", "name": "NaCl", "energy": 0, "protein": 0 }
+    	{ "id": 65, "cat": "drink", "name": "175 ml. sødmælk", "energy": 460, "protein": 6 },
+    	{ "id": 66, "cat": "drink", "name": "175 ml. minimælk", "energy": 300, "protein": 6 },
+    	{ "id": 67, "cat": "drink", "name": "175 ml. skummetmælk", "energy": 250, "protein": 6 },
+    	{ "id": 68, "cat": "drink", "name": "175 ml. kærnemælk", "energy": 250, "protein": 6 },
+    	{ "id": 69, "cat": "drink", "name": "175 ml. kakaoskummetmælk", "energy": 420, "protein": 6 },
+    	{ "id": 70, "cat": "drink", "name": "175 ml. juice", "energy": 340, "protein": 1 },
+    	{ "id": 71, "cat": "drink", "name": "175 ml. sodavand med sukker", "energy": 300, "protein": 0 },
+    	{ "id": 72, "cat": "drink", "name": "175 ml. saftevand med sukker", "energy": 300, "protein": 0 },
+    	{ "id": 73, "cat": "drink", "name": "175 ml. lys øl", "energy": 250, "protein": 0.2 },
+    	{ "id": 74, "cat": "drink", "name": "175 ml. hvidtøl", "energy": 250, "protein": 0.2 },
+    	{ "id": 75, "cat": "drink", "name": "50 ml. piskefløde 38% fedt", "energy": 750, "protein": 1 },
+    	{ "id": 76, "cat": "drink", "name": "50 ml. kaffefløde 9% fedt", "energy": 230, "protein": 1.5 },
+    	{ "id": 77, "cat": "drink", "name": "175 ml. vand", "energy": 0, "protein": 0 },
+    	{ "id": 78, "cat": "drink", "name": "175 ml. danskvand", "energy": 0, "protein": 0 },
+    	{ "id": 79, "cat": "drink", "name": "175 ml. kaffe", "energy": 0, "protein": 0 },
+    	{ "id": 80, "cat": "drink", "name": "175 ml. te", "energy": 0, "protein": 0 },
+    	{ "id": 81, "cat": "drink", "name": "175 ml. sodavand uden sukker", "energy": 0, "protein": 0 },
+    	{ "id": 82, "cat": "drink", "name": "175 ml. saftevand uden sukker", "energy": 0, "protein": 0 },
+    	{ "id": 83, "cat": "drink", "name": "100 ml. Glukose 20%", "energy": 340, "protein": 0 },
+    	{ "id": 84, "cat": "drink", "name": "200 ml. Fresubin jucy drink", "energy": 1260, "protein": 8 },
+    	{ "id": 85, "cat": "drink", "name": "200 ml. Fresubin energi drink", "energy": 1260, "protein": 10 },
+    	{ "id": 86, "cat": "drink", "name": "125 ml. Nutridrink Compact", "energy": 1260, "protein": 12 },
+    	{ "id": 87, "cat": "drink", "name": "200 ml. F protein energi drink", "energy": 1260, "protein": 20 },
+    	{ "id": 88, "cat": "drink", "name": "200 ml. Fresubin 2 kcal drink", "energy": 1680, "protein": 20 },
+    	{ "id": 89, "cat": "drink", "name": "175 ml. Arla Protin med sukker", "energy": 880, "protein": 10 },
+    	{ "id": 90, "cat": "drink", "name": "125 ml. Fresubin yocrème", "energy": 800, "protein": 9.5 },
+    	{ "id": 91, "cat": "drink", "name": "500 ml. Fresubin HP energi", "energy": 3150, "protein": 40 },
+    	{ "id": 92, "cat": "drink", "name": "1000 ml. Fresubin complete", "energy": 5040, "protein": 60 },
+    	{ "id": 93, "cat": "drink", "name": "500 ml. Fresubin energi fiber", "energy": 3150, "protein": 30 },
+    	{ "id": 94, "cat": "drink", "name": "500 ml. Fresubin original fiber", "energy": 2100, "protein": 20 },
+    	{ "id": 95, "cat": "drink", "name": "500 ml. Isosource mix", "energy": 2100, "protein": 22 },
+    	{ "id": 96, "cat": "drink", "name": "500 ml. Survimed OPD", "energy": 2100, "protein": 23 },
+    	{ "id": 97, "cat": "drink", "name": "500 ml. Nutrison low sodium", "energy": 2100, "protein": 20 },
+    	{ "id": 98, "cat": "drink", "name": "500 ml. Nutrison concentrated", "energy": 4200, "protein": 40 },
+    	{ "id": 99, "cat": "drink", "name": "500 ml. Glukose 20%", "energy": 1680, "protein": 0 },
+    	{ "id": 100, "cat": "drink", "name": "100 ml. SmofKaniven central", "energy": 460, "protein": 5 },
+    	{ "id": 101, "cat": "drink", "name": "100 ml. SmofKaniven perifer", "energy": 300, "protein": 3 },
+    	{ "id": 102, "cat": "drink", "name": "500 ml. Glukose 10%", "energy": 840, "protein": 0 },
+    	{ "id": 103, "cat": "drink", "name": "NaCl", "energy": 0, "protein": 0 }
      ];  
      
      var users = [
@@ -318,17 +318,17 @@ app.run(function($ionicPlatform, $location) {
         { "id": 84, "cat": "drink", "name": "200 ml. Fresubin jucy drink", "energy": 1260, "protein": 8 }
     ]},
     {
-    "recID": 2,
-    "totalProtein": 32,
-    "meals": [ 
-      { "id": 27, "cat": "lunch", "name": "100 ml. suppe, legeret", "energy": 300, "protein": 3 },
-      { "id": 31, "cat": "lunch", "name": "1 stk grovbrød", "energy": 340, "protein": 2.5 },
-      { "id": 30, "cat": "lunch", "name": "1 stk franskbrød", "energy": 340, "protein": 2.5 },
-      { "id": 32, "cat": "lunch", "name": "1 pk. kærgården", "energy": 315, "protein": 0 },
-      { "id": 34, "cat": "lunch", "name": "Pålæg til 1/2 stk. brød", "energy": 170, "protein": 4 },
-      { "id": 34, "cat": "lunch", "name": "Pålæg til 1/2 stk. brød", "energy": 170, "protein": 4 },
-      { "id": 84, "cat": "drink", "name": "200 ml. Fresubin jucy drink", "energy": 1260, "protein": 8 },
-      { "id": 84, "cat": "drink", "name": "200 ml. Fresubin jucy drink", "energy": 1260, "protein": 8 }
+      "recID": 2,
+      "totalProtein": 32,
+      "meals": [ 
+        { "id": 27, "cat": "lunch", "name": "100 ml. suppe, legeret", "energy": 300, "protein": 3 },
+        { "id": 31, "cat": "lunch", "name": "1 stk grovbrød", "energy": 340, "protein": 2.5 },
+        { "id": 30, "cat": "lunch", "name": "1 stk franskbrød", "energy": 340, "protein": 2.5 },
+        { "id": 32, "cat": "lunch", "name": "1 pk. kærgården", "energy": 315, "protein": 0 },
+        { "id": 34, "cat": "lunch", "name": "Pålæg til 1/2 stk. brød", "energy": 170, "protein": 4 },
+        { "id": 34, "cat": "lunch", "name": "Pålæg til 1/2 stk. brød", "energy": 170, "protein": 4 },
+        { "id": 84, "cat": "drink", "name": "200 ml. Fresubin jucy drink", "energy": 1260, "protein": 8 },
+        { "id": 84, "cat": "drink", "name": "200 ml. Fresubin jucy drink", "energy": 1260, "protein": 8 }
     ]},
     {
       "recID": 3,
@@ -362,14 +362,14 @@ app.run(function($ionicPlatform, $location) {
     
     var dinnerRecommendations = [
     {
-    "recID": 1,
-    "totalProtein": 30,
-    "meals": [ 
-      {"id": 41,"cat": "dinner","name": "1 port. hovedret, normal", "energy": 1900, "protein": 20 },
-      { "id": 43, "cat": "dinner", "name": "1 stk. frisk frugt", "energy": 230, "protein": 1 },
-      { "id": 42, "cat": "dinner", "name": "1 port. dessert", "energy": 1300, "protein": 7 },
-      { "id": 55, "cat": "snack", "name": "1 spsk. nøddemix", "energy": 710, "protein": 3 },
-      { "id": 69, "cat": "drink", "name": "175 ml. kakaoskummetmælk", "energy": 420, "protein": 6 }
+      "recID": 1,
+      "totalProtein": 30,
+      "meals": [ 
+        {"id": 41,"cat": "dinner","name": "1 port. hovedret, normal", "energy": 1900, "protein": 20 },
+        { "id": 43, "cat": "dinner", "name": "1 stk. frisk frugt", "energy": 230, "protein": 1 },
+        { "id": 42, "cat": "dinner", "name": "1 port. dessert", "energy": 1300, "protein": 7 },
+        { "id": 55, "cat": "snack", "name": "1 spsk. nøddemix", "energy": 710, "protein": 3 },
+        { "id": 69, "cat": "drink", "name": "175 ml. kakaoskummetmælk", "energy": 420, "protein": 6 }
     ]},
     {
       "recID": 2,
@@ -434,10 +434,7 @@ app.run(function($ionicPlatform, $location) {
       "meals": [ 
         { "id": 87, "cat": "drink", "name": "200 ml. F protein energi drink", "energy": 1260, "protein": 20 },
     ]}];
-
-
-
-         
+   
      window.localStorage['meals'] = angular.toJson(meals);
      window.localStorage['users'] = angular.toJson(users);
      window.localStorage['registrations'] = angular.toJson(registrations);
@@ -446,15 +443,12 @@ app.run(function($ionicPlatform, $location) {
      window.localStorage['dinnerRecommendations'] = angular.toJson(dinnerRecommendations);
      window.localStorage['snackRecommendations'] = angular.toJson(snackRecommendations);
 
-
      localStorage.setItem('firstVisitKostReg', '1');
-  }
- 
+  } 
 })
 
 
 app.controller('NavbarCtrl', function ($scope, $ionicSideMenuDelegate) {
-
   $scope.openMenu = function () {
     $ionicSideMenuDelegate.toggleLeft();
   };
