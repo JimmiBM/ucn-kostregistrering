@@ -162,26 +162,25 @@ app.controller('RegistrationCtrl', function ($scope, $rootScope, $ionicModal, $i
   
 });
 
-app.controller('MealRecommendationCtrl', function($scope, Meals, $window, $ionicSideMenuDelegate){
-	$scope.userWeight = 100;
-	$scope.proteinToday = 75;
-	$scope.energyToday = 6000;
-	$scope.mealRecommendations = [];
-	
+app.controller('MealRecommendationCtrl', function($scope, Meals, $window, $ionicSideMenuDelegate, Registrations, $filter){
+	var loggedInUser = angular.fromJson(window.localStorage['loggedInUser']);
+  var registrations = Registrations.all();//get all registrations
+  var userRegistrations = $filter('filter')(registrations, {userSSN: parseInt(loggedInUser.SSN)});//Find registrations belonging to loggedinuser
+  var userWeight = loggedInUser.weight;
+	var energyToday = 0;
+  var proteinToday = 0;
+  //Get the hour of the day
 	var date = new Date();
 	var currentHour = date.getHours();
-	console.log(currentHour);
 	
+  //Get the recommendations
 	var breakfastRecommendations = angular.fromJson(window.localStorage['breakfastRecommendations']);
 	var lunchRecommendations = angular.fromJson(window.localStorage['lunchRecommendations']);
 	var dinnerRecommendations = angular.fromJson(window.localStorage['dinnerRecommendations']);
 	var snackRecommendations = angular.fromJson(window.localStorage['snackRecommendations']);
-	console.log(breakfastRecommendations);
-	console.log(lunchRecommendations);
-	console.log(dinnerRecommendations);
-	console.log(snackRecommendations);
+	$scope.mealRecommendations = [];
 	
-	
+	//Select recommendations to show depending on the hour of the day
 	if(currentHour > 6 && currentHour < 12)
 	{
 		breakfastRecommendations.forEach(function(meal){
@@ -208,17 +207,53 @@ app.controller('MealRecommendationCtrl', function($scope, Meals, $window, $ionic
 	}
 	
 	$scope.energyNeeded = function(energyPerKilo){
-		return userWeight * energyPerKil - energyToday;
-	}
+		return userWeight * energyPerKilo - energyToday;
+	};
 	
 	$scope.proteinNeeded = function(proteinPerKilo){
 		return userWeight * proteinPerKilo - proteinToday;
-	}
+	};
 	
-	$scope.recommendedBreakfast = function(proteinPerKilo){
-		var breakfastProtein = proteinNeeded(proteinPerKilo) / 3;
-		$scope.breakfastList.forEach(function(meal){
-//			if(meal.protein)
-		});
-	}
-})
+  //Get the registration from today
+  var getTodaysReg = function(){
+    var today = new Date();
+    var weekday=new Array("Søndag","Mandag","Tirsdag","Onsdag","Torsdag","Fredag","Lørdag");
+    var monthname=new Array("Januar","Februar","Marts","April","Maj","Juni","Juli","August","September","October","November","December");
+    var userSSN = loggedInUser.SSN;
+    var title = weekday[today.getDay()] + " d. " + today.getDate() + ". " + monthname[today.getMonth()] + " " + today.getFullYear();
+    var todaysReg = {};
+    if(userRegistrations.length > 0) {
+      for(var i = userRegistrations.length - 1; i >= 0; i--) {
+        if(userRegistrations[i].title == title) {
+          todaysReg = userRegistrations[i];
+          break;
+        }
+      } //endfor
+    }
+      return todaysReg;
+  };
+  var todaysReg = getTodaysReg();
+  
+  //Calculate how much protein have been consumed today
+  var proteinConsumedToday = function(){
+    var protein = 0;
+    console.log(todaysReg);
+    if(todaysReg.meals != undefined && todaysReg.meals.length > 0) {
+      todaysReg.meals.forEach(function(meal){
+        protein += meal.protein * meal.amount / 100;
+      });
+    }
+    return protein;
+  };
+  proteinToday = proteinConsumedToday();
+  
+  $scope.mealEnergy = function(meals){
+    var energy = 0;
+    if(meals != undefined){
+      meals.forEach(function(meal){
+        energy += meal.energy;
+      });
+    }
+    return energy;
+  };
+});

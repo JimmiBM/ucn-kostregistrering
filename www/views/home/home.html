@@ -1,46 +1,52 @@
 <ion-view title="Startside" ng-controller="RegistrationCtrl">
-  <ion-content>
+  <ion-content ng-controller="MealRecommendationCtrl">
     <div class="card">
       <div class="item item-divider">Information</div>
       <div class="item item-text-wrap">
         <div class="row">
-    			<div class="col-25">Navn:</div>
-    			<div class="col-75">{{ loggedInUser.firstname }} {{loggedInUser.surname}}</div>
+    			<div class="col-50">Navn:</div>
+    			<div class="col-50">{{ loggedInUser.firstname }} {{loggedInUser.surname}}</div>
     		</div>
     		<div class="row">
-    			<div class="col-25">Cpr nr:</div>
-    			<div class="col-75">{{ loggedInUser.SSN }}</div>
+    			<div class="col-50">Cpr nr:</div>
+    			<div class="col-50">{{ loggedInUser.SSN }}</div>
+    		</div>
+    		<div class="row">
+    			<div class="col-50">Vægt:</div>
+    			<div class="col-50">{{ loggedInUser.weight }} Kg</div>
+    		</div>
+    		<div class="row">
+    			<div class="col-50">Resterende protein:</div>
+    			<div class="col-50">{{ proteinNeeded(1) }} g</div>
     		</div>
       </div>
     </div>
 
     <div class="list card">
       <a href="#" ng-click="checkToCreateReg()" class="item item-icon-left item-icon-right">
-      		<i class="icon ion-plus-round"></i>
-      		Opret kostregistrering
+    		<i class="icon ion-plus-round"></i>
+    		Opret kostregistrering
+        <i class="icon ion-arrow-right-c"></i>
+    	</a>
+      <div class="item item-divider">
+    		Seneste kostregistreringer
+    	</div>
+      <li class="item" ng-show="!loggedInUserRegistrations.length">Der er ingen registreringer endnu</li>
+      <li style="list-style: none" ng-repeat="reg in loggedInUserRegistrations | filter:{ userSSN: loggedInUser.SSN } | orderBy: '-rID' | limitTo: 3">
+        <a class="item item-icon-right" ng-click="goToReg({{reg.rID}})" href="#">
+          {{ reg.title }}
           <i class="icon ion-arrow-right-c"></i>
-      	</a>
-        <div class="item item-divider">
-      		Seneste kostregistreringer
-      	</div>
-        <li class="item" ng-show="!loggedInUserRegistrations.length">Der er ingen registreringer endnu</li>
-        <li style="list-style: none" ng-repeat="reg in loggedInUserRegistrations | filter:{ userSSN: loggedInUser.SSN } | orderBy: '-rID' | limitTo: 3">
-          <a class="item item-icon-right" ng-click="goToReg({{reg.rID}})" href="#">
-            {{ reg.title }}
-            <i class="icon ion-arrow-right-c"></i>
-          </a>
-        </li>
-     
-      	<a href="#/myNutrition" class="item item-icon-left item-icon-right">
-      		<i class="icon ion-navicon-round"></i>
-      		Se alle
-          <i class="icon ion-arrow-right-c"></i>
-      	</a>
-      
-      	
+        </a>
+      </li>
+   
+    	<a href="#/myNutrition" class="item item-icon-left item-icon-right">
+    		<i class="icon ion-navicon-round"></i>
+    		Se alle
+        <i class="icon ion-arrow-right-c"></i>
+    	</a>
     </div>
 
-    <div class="list card" ng-controller="MealRecommendationCtrl">
+    <div class="list card">
       <div class="item item-divider">
         Madforslag
       </div>
@@ -48,33 +54,29 @@
         <li class="item">
           <h2>Rettens navn: Hovedret {{recommendation.recID}}</h2>
           <h4>Protein: {{ recommendation.totalProtein }}</h4>
-          <h4>Energi: {{ recommendation.totalEnergi }}</h4>
+          <h4>Energi: {{mealEnergy(recommendation.meals)}}</h4>
           <br/>
-          <p>Rettens indhold</p>
+          <div class="row">
+            <div class="col-67"><p>Rettens indhold</p></div>
+            <div class="col"><p>Protein</p></div>
+            <div class="col"><p>Energi</p></div>
+          </div>
           <hr/>
           <div ng-repeat="meal in recommendation.meals">
             <div class="row">
-              <div class="col-50">
+              <div class="col-67">
                 <p>{{meal.name}}</p>
               </div>
-              <div class="col-25">
-                <p>Protein: {{meal.protein}} g</p>
+              <div class="col">
+                <p>{{meal.protein}} g</p>
               </div>
-              <div class="col-25">
-                <p>Protein: {{meal.energy}} Kj</p>
+              <div class="col">
+                <p>{{meal.energy}} Kj</p>
               </div>
             </div>
           </div>
         </li>
       </div>
     </div>
-
-<li class="item" ng-repeat="recomendations in recomendationList">
-  <h2>shdisauhd</h2>
-
-
-</div>
-
-    
   </ion-content>
 </ion-view>
