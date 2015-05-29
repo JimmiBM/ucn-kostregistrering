@@ -95,7 +95,7 @@ app.run(function($ionicPlatform, $location) {
     }
   });
   
-  //window.localStorage.clear();
+//  window.localStorage.clear();
 
   //If first visit, insert standard db
   var firstVisit = localStorage.getItem('firstVisitKostReg');

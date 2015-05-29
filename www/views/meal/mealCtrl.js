@@ -160,3 +160,64 @@ app.controller('RegistrationCtrl', function ($scope, $rootScope, $ionicModal, $i
   
   
 });
+
+app.controller('MealRecommendationCtrl', function($scope, Meals, $window, $ionicSideMenuDelegate){
+	$scope.userWeight = 100;
+	$scope.proteinToday = 75;
+	$scope.energyToday = 6000;
+	$scope.mealRecommendations = [];
+	
+	var date = new Date();
+	var currentHour = date.getHours();
+	console.log(currentHour);
+	
+	var breakfastRecommendations = angular.fromJson(window.localStorage['breakfastRecommendations']);
+	var lunchRecommendations = angular.fromJson(window.localStorage['lunchRecommendations']);
+	var dinnerRecommendations = angular.fromJson(window.localStorage['dinnerRecommendations']);
+	var snackRecommendations = angular.fromJson(window.localStorage['snackRecommendations']);
+	console.log(breakfastRecommendations);
+	console.log(lunchRecommendations);
+	console.log(dinnerRecommendations);
+	console.log(snackRecommendations);
+	
+	
+	if(currentHour > 6 && currentHour < 12)
+	{
+		breakfastRecommendations.forEach(function(meal){
+			$scope.mealRecommendations.push(meal);
+		});
+	}
+	else if(currentHour < 16)
+	{
+		lunchRecommendations.forEach(function(meal){
+			$scope.mealRecommendations.push(meal);
+		});
+	}
+	else if(currentHour < 22)
+	{
+		dinnerRecommendations.forEach(function(meal){
+			$scope.mealRecommendations.push(meal);
+		});
+	}
+	else
+	{
+		snackRecommendations.forEach(function(meal){
+			$scope.mealRecommendations.push(meal);
+		});
+	}
+	
+	$scope.energyNeeded = function(energyPerKilo){
+		return userWeight * energyPerKil - energyToday;
+	}
+	
+	$scope.proteinNeeded = function(proteinPerKilo){
+		return userWeight * proteinPerKilo - proteinToday;
+	}
+	
+	$scope.recommendedBreakfast = function(proteinPerKilo){
+		var breakfastProtein = proteinNeeded(proteinPerKilo) / 3;
+		$scope.breakfastList.forEach(function(meal){
+//			if(meal.protein)
+		});
+	}
+})
