@@ -10,6 +10,7 @@ describe("RegistrationCtrl", function() {
         $ionicLoading,
         $ionicPopup,
         Meals,
+        Registrations,
         $filter,
         $window,
         $ionicSideMenuDelegate) {
@@ -23,6 +24,7 @@ describe("RegistrationCtrl", function() {
                 $ionicLoading: $ionicLoading,
                 $ionicPopup: $ionicPopup,
                 Meals: Meals,
+                Registrations: Registrations,
                 $filter: $filter,
                 $window: $window,
                 $ionicSideMenuDelegate: $ionicSideMenuDelegate
@@ -39,16 +41,41 @@ describe("RegistrationCtrl", function() {
     });
     
     it("should be able to find a registered meal from id", function(){
-        expect(scope.getRegistrationByID(1).userSSN).toEqual(1234567890);
+        expect(scope.getRegistrationByID(2).userSSN).toEqual(1234567890);
     });
     
-    it("should be able to register a meal registration", function(){
+    it("should be able to register a registration", function(){
         var loggedInUserSSN = 1234567890;
+        scope.loggedInUser.SSN = 1234567890;
         
-        scope.createRegistration();
-        expect(scope.getRegistrationByID(scope.Regisrations.All.count-1).userSSN).toEqual(loggedInUserSSN);
+        scope.checkToCreateReg();
+        expect(scope.getRegistrationByID(scope.registrations.length).userSSN).toEqual(loggedInUserSSN);
     });
     
-//    it("should be able to change amount");
+    it("should be able to add a meal to a registration", function(){
+        //check meal arrays length before adding
+        var mealLengthBefore = scope.getRegistrationByID(1).meals.length;
+        //add meal to registration
+        scope.addMealToRegistration(1,1); 
+        //check meal arrays length after adding
+        var mealLengthAfter = scope.getRegistrationByID(1).meals.length;
+        
+        expect(mealLengthAfter > mealLengthBefore).toBe(true);
+    });
+    
+    it("should be able to remove a meal from a registration", function(){
+        //set registration to remove from
+        scope.registration = scope.getRegistrationByID(2); 
+        //check meal arrays length before removing
+        var mealLengthBefore = scope.registration.meals.length;
+        //remove the meal from registration
+        scope.removeMealFromRegistration(1); 
+        //check meal arrays length after removing
+        var mealLengthAfter = scope.registration.meals.length;
+        
+        expect(mealLengthAfter < mealLengthBefore).toBe(true);
+    });
+    
+
 });
 

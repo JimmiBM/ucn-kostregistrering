@@ -5,8 +5,8 @@
     
     <h1 class="title">Tilføjede</h1>
    
-      <button class="button button-clear" ng-if="registration.meals.length" ng-click="saveRegistration({{registration.rID}})">Gem</button>
-    
+       <button class="button button-clear" ng-if="registration.meals.length" ng-click="saveRegistration({{registration.rID}})">Gem</button>
+
   </ion-header-bar>
   <ion-content>
     <ul class="list" > <!--ng-repeat="meal in meals" -->
@@ -14,7 +14,7 @@
       <li class="item" ng-repeat="meal in registration.meals | filter: { cat: 'breakfast' }">
         <div class="amount">
         </div>
-        <h2 style="font-weight:bold;">{{meal.name}} <span style="float:right"><a ng-click="removeMealFromRegistration({{meal.mID}})" href="">FJERN</a></span></h2>
+        <h2 style="font-weight:bold;">{{meal.name}} <span style="float:right"><a class="" ng-click="removeMealFromRegistration({{meal.mID}})" href="">FJERN</a></span></h2>
         <div class="item range ">
           Spist ca.: <input type="range" name="rangeSlider" min="0" max="100" value="{{meal.amount}}" step="25" ng-model="meal.amount"> 
             {{meal.amount}} %
