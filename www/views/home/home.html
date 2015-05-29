@@ -40,53 +40,34 @@
       	
     </div>
 
-<div class="list card">
-<div class="item item-divider">
-Madforslag
-</div>
-<li class="item">
-<h2>Rettens navn: Hovedret 1</h2>
-<h4>Protein: 33</h4>
-<h4>Energi: 2500</h4>
-<br/>
-<p>Rettens indhold</p>
-<hr/>
-<div class="row">
-
-<div class="col-75">
-<p>1 port. hovedret, normal</p>
-</div>
-<div class="col-25">
-<p>protein: 20g</p>
-
-</div>
-</div>
-
-<div class="row">
-
-<div class="col-75">
-<p>1 port. dessert</p>
-</div>
-<div class="col-25">
-<p>protein: 7g</p>
-
-</div>
-</div>
-
-<div class="row">
-
-<div class="col-75">
-<p>175 ml juice</p>
-</div>
-<div class="col-25">
-<p>protein: 1g</p>
-
-</div>
-</div>
-</div>
-
-</li>
-
+    <div class="list card" ng-controller="MealRecommendationCtrl">
+      <div class="item item-divider">
+        Madforslag
+      </div>
+      <div ng-repeat="recommendation in mealRecommendations">
+        <li class="item">
+          <h2>Rettens navn: Hovedret {{recommendation.recID}}</h2>
+          <h4>{{ recommendation.totalProtein }}</h4>
+          <h4>Energi: 2500</h4>
+          <br/>
+          <p>Rettens indhold</p>
+          <hr/>
+          <div ng-repeat="meal in recommendation.meals">
+            <div class="row">
+              <div class="col-50">
+                <p>{{meal.name}}</p>
+              </div>
+              <div class="col-25">
+                <p>Protein: {{meal.protein}} g</p>
+              </div>
+              <div class="col-25">
+                <p>Protein: {{meal.energy}} Kj</p>
+              </div>
+            </div>
+          </div>
+        </li>
+      </div>
+    </div>
 
 <li class="item" ng-repeat="recomendations in recomendationList">
   <h2>shdisauhd</h2>
