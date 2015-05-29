@@ -47,8 +47,8 @@
       <div ng-repeat="recommendation in mealRecommendations">
         <li class="item">
           <h2>Rettens navn: Hovedret {{recommendation.recID}}</h2>
-          <h4>{{ recommendation.totalProtein }}</h4>
-          <h4>Energi: 2500</h4>
+          <h4>Protein: {{ recommendation.totalProtein }}</h4>
+          <h4>Energi: {{ recommendation.totalEnergi }}</h4>
           <br/>
           <p>Rettens indhold</p>
           <hr/>
