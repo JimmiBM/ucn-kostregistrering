@@ -207,10 +207,10 @@ app.run(function($ionicPlatform, $location) {
      ];  
      
      var users = [
-       {"SSN": "1234561111", "firstname": "Jimmi", "surname": "Noob", "email": "Jimmi@Noob.dk", "password": "divareaper"},
-       {"SSN": "2234561113", "firstname": "Henrik", "surname": "SkylderBurgers", "email": "Henrik@burgers.dk", "password": "burgers"},
-       {"SSN": "3234561115", "firstname": "Chrisian", "surname": "Kradse", "email": "Kradse@Schachner.dk", "password": "superlamas"},
-       {"SSN": "1234567890", "firstname": "Test", "surname": "Test", "email": "Test@Eksempel.dk", "password": "1234"}
+       {"SSN": "1234561111", "firstname": "Jimmi", "surname": "Noob", "email": "Jimmi@Noob.dk", "password": "divareaper", "weight": "70"},
+       {"SSN": "2234561113", "firstname": "Henrik", "surname": "SkylderBurgers", "email": "Henrik@burgers.dk", "password": "burgers", "weight": "70"},
+       {"SSN": "3234561115", "firstname": "Chrisian", "surname": "Kradse", "email": "Kradse@Schachner.dk", "password": "superlamas", "weight": "70"},
+       {"SSN": "1234567890", "firstname": "Test", "surname": "Test", "email": "Test@Eksempel.dk", "password": "1234", "weight": "80"}
      ];
      
      var registrations = [
