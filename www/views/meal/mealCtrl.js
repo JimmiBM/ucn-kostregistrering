@@ -260,7 +260,7 @@ app.controller('MealRecommendationCtrl', function($scope, Meals, $window, $ionic
       $scope.mealName = "Natmad";
   		snackRecommendations.forEach(function(meal){
   			//recommend snacks that supply up to the remaining requirement of the day
-        if(meal.totalProtein < $scope.proteinNeeded(1)){
+        if($scope.mealProtein(meal.meals) < $scope.proteinNeeded(1)){
   			  $scope.mealRecommendations.push(meal);
         }
   		});
@@ -324,9 +324,11 @@ app.controller('MealRecommendationCtrl', function($scope, Meals, $window, $ionic
   			  $scope.mealRecommendations.push(meal);
         }
   		});
-      console.log($scope.mealRecommendations);
+    }
       return $scope.mealRecommendations;
-	}}; // End of getMealRecommendations
+  }; // End of getMealRecommendations
   
-  $scope.getMealRecommendations(currentHour);
+  $scope.getMealRec = function() {
+    $scope.getMealRecommendations(currentHour);
+  }
 });

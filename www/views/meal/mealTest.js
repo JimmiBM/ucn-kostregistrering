@@ -117,9 +117,8 @@ describe("MealRecommendationCtrl", function() {
     });
     
     it("should show nightime snacks before 6am", function() {
-        var blabla = scope.getMealRecommendations(5);
-        console.log(blabla);
-        var firstSnackID = blabla[0].meals[0].id;
+        var recommendations = scope.getMealRecommendations(5);
+        var firstSnackID = recommendations[0].meals[0].id;
         expect(firstSnackID).toEqual(48);
     });
 });
