@@ -187,44 +187,14 @@ app.controller('MealRecommendationCtrl', function($scope, Meals, $window, $ionic
   //Get the recommendations
 	var breakfastRecommendations = angular.fromJson(window.localStorage['breakfastRecommendations']);
 	var lunchRecommendations = angular.fromJson(window.localStorage['lunchRecommendations']);
+	var lateLunchRecommendations = angular.fromJson(window.localStorage['afternoonSnackRecommendations']);
 	var dinnerRecommendations = angular.fromJson(window.localStorage['dinnerRecommendations']);
+	var lateDinnerRecommendations = angular.fromJson(window.localStorage['nightSnackRecommendations']);
 	var snackRecommendations = angular.fromJson(window.localStorage['snackRecommendations']);
-	$scope.mealRecommendations = [];
-	
-	//Select recommendations to show depending on the hour of the day
-	if(currentHour > 6 && currentHour < 12)
-	{
-		breakfastRecommendations.forEach(function(meal){
-			$scope.mealRecommendations.push(meal);
-		});
-	}
-	else if(currentHour < 16)
-	{
-		lunchRecommendations.forEach(function(meal){
-			$scope.mealRecommendations.push(meal);
-		});
-	}
-	else if(currentHour < 22)
-	{
-		dinnerRecommendations.forEach(function(meal){
-			$scope.mealRecommendations.push(meal);
-		});
-	}
-	else
-	{
-		snackRecommendations.forEach(function(meal){
-			$scope.mealRecommendations.push(meal);
-		});
-	}
-	
-	$scope.energyNeeded = function(energyPerKilo){
-		return userWeight * energyPerKilo - energyToday;
-	};
-	
-	$scope.proteinNeeded = function(proteinPerKilo){
-		return userWeight * proteinPerKilo - proteinToday;
-	};
-	
+  
+  $scope.mealRecommendations = [];
+	$scope.mealName = "";
+  
   //Get the registration from today
   var getTodaysReg = function(){
     var today = new Date();
@@ -232,6 +202,7 @@ app.controller('MealRecommendationCtrl', function($scope, Meals, $window, $ionic
     var monthname=new Array("Januar","Februar","Marts","April","Maj","Juni","Juli","August","September","October","November","December");
     var userSSN = loggedInUser.SSN;
     var title = weekday[today.getDay()] + " d. " + today.getDate() + ". " + monthname[today.getMonth()] + " " + today.getFullYear();
+    
     var todaysReg = {};
     if(userRegistrations.length > 0) {
       for(var i = userRegistrations.length - 1; i >= 0; i--) {
@@ -248,7 +219,6 @@ app.controller('MealRecommendationCtrl', function($scope, Meals, $window, $ionic
   //Calculate how much protein have been consumed today
   var proteinConsumedToday = function(){
     var protein = 0;
-    console.log(todaysReg);
     if(todaysReg.meals != undefined && todaysReg.meals.length > 0) {
       todaysReg.meals.forEach(function(meal){
         protein += meal.protein * meal.amount / 100;
@@ -267,4 +237,85 @@ app.controller('MealRecommendationCtrl', function($scope, Meals, $window, $ionic
     }
     return energy;
   };
+  
+  $scope.mealProtein = function(meals){
+    var protein = 0;
+    if(meals != undefined){
+      meals.forEach(function(meal){
+        protein += meal.protein;
+      });
+    }
+    return protein;
+  }
+	
+  //Calculate how much more energy and protein is needed today
+	$scope.energyNeeded = function(energyPerKilo){
+		return userWeight * energyPerKilo - energyToday;
+	};
+	
+	$scope.proteinNeeded = function(proteinPerKilo){
+		return userWeight * proteinPerKilo - proteinToday;
+	};
+  
+	//Select recommendations to show depending on the hour of the day
+	if(currentHour > 6 && currentHour < 11)
+	{
+    $scope.mealName = "Morgenmad";
+    breakfastRecommendations.forEach(function(meal){
+      //recommend breakfast meals that supply up to a little over a third of the remaining requirement of the day
+      if($scope.mealProtein(meal.meals) < $scope.proteinNeeded(1) * 0.25){
+			  $scope.mealRecommendations.push(meal);
+      }
+		});
+	}
+	else if(currentHour < 14)
+	{
+    $scope.mealName = "Middagsmad";
+    lunchRecommendations.forEach(function(meal){
+      //recommend lunch meals that supply up to a little over half of the remaining requirement of the day
+      if($scope.mealProtein(meal.meals) < $scope.proteinNeeded(1) * 0.45){
+			  $scope.mealRecommendations.push(meal);
+      }
+		});
+	}
+  else if(currentHour < 17)
+  {
+    $scope.mealName = "Eftermiddagsmad";
+    lateLunchRecommendations.forEach(function(meal){
+      //recommend lunch meals that supply up to a little over half of the remaining requirement of the day
+      if($scope.mealProtein(meal.meals) < $scope.proteinNeeded(1) * 0.65){
+			  $scope.mealRecommendations.push(meal);
+      }
+		});
+  }
+	else if(currentHour < 20)
+	{
+    $scope.mealName = "Aftensmad";
+		dinnerRecommendations.forEach(function(meal){
+      //recommend dinner meals that supply up to a little over the remaining requirement of the day
+      if($scope.mealProtein(meal.meals) < $scope.proteinNeeded(1) * 0.85){
+			  $scope.mealRecommendations.push(meal);
+      }
+    });
+	}
+	else if(currentHour < 24)
+	{
+    $scope.mealName = "Sen Aftensmad";
+		lateDinnerRecommendations.forEach(function(meal){
+      //recommend dinner meals that supply up to a little over the remaining requirement of the day
+      if($scope.mealProtein(meal.meals) < $scope.proteinNeeded(1) * 1.05){
+			  $scope.mealRecommendations.push(meal);
+      }
+    });
+	}
+	else
+	{
+    $scope.mealName = "Natmad";
+		snackRecommendations.forEach(function(meal){
+			//recommend snacks that supply up to the remaining requirement of the day
+      if(meal.totalProtein < $scope.proteinNeeded(1)){
+			  $scope.mealRecommendations.push(meal);
+      }
+		});
+	}
 });
