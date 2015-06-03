@@ -76,6 +76,50 @@ describe("RegistrationCtrl", function() {
         expect(mealLengthAfter < mealLengthBefore).toBe(true);
     });
     
-
 });
 
+describe("MealRecommendationCtrl", function() {
+
+    var scope, controller;
+    beforeEach(module('App'));
+
+    beforeEach(inject(function (
+        $rootScope,
+        $controller,
+        $ionicModal, 
+        $ionicLoading,
+        $ionicPopup,
+        Meals,
+        Registrations,
+        $filter,
+        $window,
+        $ionicSideMenuDelegate) {
+
+            scope = $rootScope.$new();  
+        
+            controller = $controller('MealRecommendationCtrl', {
+                $scope: scope,
+                $rootScope: $rootScope,
+                $ionicModal: $ionicModal,
+                $ionicLoading: $ionicLoading,
+                $ionicPopup: $ionicPopup,
+                Meals: Meals,
+                Registrations: Registrations,
+                $filter: $filter,
+                $window: $window,
+                $ionicSideMenuDelegate: $ionicSideMenuDelegate
+                
+            });
+    }));
+    
+    it("should have a scope variable defined", function() {
+        expect(scope).toBeDefined();
+    });
+    
+    it("should show nightime snacks before 6am", function() {
+        var blabla = scope.getMealRecommendations(5);
+        console.log(blabla);
+        var firstSnackID = blabla[0].meals[0].id;
+        expect(firstSnackID).toEqual(48);
+    });
+});
