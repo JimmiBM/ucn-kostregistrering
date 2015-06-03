@@ -52,7 +52,7 @@
       </div>
       <div ng-repeat="recommendation in mealRecommendations">
         <li class="item">
-          <h2>Rettens navn: Hovedret {{recommendation.recID}}</h2>
+          <h2>Rettens navn: {{mealName}} {{recommendation.recID}}</h2>
           <h4>Protein: {{ recommendation.totalProtein }}</h4>
           <h4>Energi: {{mealEnergy(recommendation.meals)}}</h4>
           <br/>
