@@ -171,7 +171,7 @@ app.controller('MealRecommendationCtrl', function($scope, Meals, $window, $ionic
   var proteinToday = 0;
   //Get the hour of the day
 	var date = new Date();
-	var currentHour = date.getHours();
+	var currentHour = 1;
 	
   //Get the recommendations
 	var breakfastRecommendations = angular.fromJson(window.localStorage['breakfastRecommendations']);
@@ -238,8 +238,8 @@ app.controller('MealRecommendationCtrl', function($scope, Meals, $window, $ionic
   }
 	
   //Calculate how much more energy and protein is needed today
-	$scope.energyNeeded = function(energyPerKilo){
-		return userWeight * energyPerKilo - energyToday;
+	$scope.energyNeeded = function(){
+		return 8500 - energyToday;
 	};
 	
 	$scope.proteinNeeded = function(proteinPerKilo){
@@ -247,12 +247,22 @@ app.controller('MealRecommendationCtrl', function($scope, Meals, $window, $ionic
 	};
   
 	//Select recommendations to show depending on the hour of the day
-	if(currentHour > 6 && currentHour < 11)
+	if(currentHour < 6)
+	{
+    $scope.mealName = "Natmad";
+		snackRecommendations.forEach(function(meal){
+			//recommend snacks that supply up to the remaining requirement of the day
+      if(meal.totalProtein < $scope.proteinNeeded(1)){
+			  $scope.mealRecommendations.push(meal);
+      }
+		});
+  }
+  else if(currentHour < 11)
 	{
     $scope.mealName = "Morgenmad";
     breakfastRecommendations.forEach(function(meal){
-      //recommend breakfast meals that supply up to a little over a third of the remaining requirement of the day
-      if($scope.mealProtein(meal.meals) < $scope.proteinNeeded(1) * 0.25){
+      //recommend breakfast meals that supply up to a little over a fifth of the remaining requirement of the day
+      if($scope.mealProtein(meal.meals) < $scope.proteinNeeded(1) * 0.25 && $scope.mealEnergy(meal.meals) < $scope.energyNeeded() * 0.25){
 			  $scope.mealRecommendations.push(meal);
       }
 		});
@@ -262,7 +272,7 @@ app.controller('MealRecommendationCtrl', function($scope, Meals, $window, $ionic
     $scope.mealName = "Middagsmad";
     lunchRecommendations.forEach(function(meal){
       //recommend lunch meals that supply up to a little over half of the remaining requirement of the day
-      if($scope.mealProtein(meal.meals) < $scope.proteinNeeded(1) * 0.45){
+      if($scope.mealProtein(meal.meals) < $scope.proteinNeeded(1) * 0.45 && $scope.mealEnergy(meal.meals) < $scope.energyNeeded() * 0.45){
 			  $scope.mealRecommendations.push(meal);
       }
 		});
@@ -272,7 +282,7 @@ app.controller('MealRecommendationCtrl', function($scope, Meals, $window, $ionic
     $scope.mealName = "Eftermiddagsmad";
     lateLunchRecommendations.forEach(function(meal){
       //recommend lunch meals that supply up to a little over half of the remaining requirement of the day
-      if($scope.mealProtein(meal.meals) < $scope.proteinNeeded(1) * 0.65){
+      if($scope.mealProtein(meal.meals) < $scope.proteinNeeded(1) * 0.65 && $scope.mealEnergy(meal.meals) < $scope.energyNeeded() * 0.65){
 			  $scope.mealRecommendations.push(meal);
       }
 		});
@@ -282,7 +292,7 @@ app.controller('MealRecommendationCtrl', function($scope, Meals, $window, $ionic
     $scope.mealName = "Aftensmad";
 		dinnerRecommendations.forEach(function(meal){
       //recommend dinner meals that supply up to a little over the remaining requirement of the day
-      if($scope.mealProtein(meal.meals) < $scope.proteinNeeded(1) * 0.85){
+      if($scope.mealProtein(meal.meals) < $scope.proteinNeeded(1) * 0.85 && $scope.mealEnergy(meal.meals) < $scope.energyNeeded() * 0.85){
 			  $scope.mealRecommendations.push(meal);
       }
     });
@@ -292,7 +302,7 @@ app.controller('MealRecommendationCtrl', function($scope, Meals, $window, $ionic
     $scope.mealName = "Sen Aftensmad";
 		lateDinnerRecommendations.forEach(function(meal){
       //recommend dinner meals that supply up to a little over the remaining requirement of the day
-      if($scope.mealProtein(meal.meals) < $scope.proteinNeeded(1) * 1.05){
+      if($scope.mealProtein(meal.meals) < $scope.proteinNeeded(1) * 1.05 && $scope.mealEnergy(meal.meals) < $scope.energyNeeded() * 1.05){
 			  $scope.mealRecommendations.push(meal);
       }
     });
