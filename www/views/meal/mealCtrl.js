@@ -79,13 +79,9 @@ app.controller('RegistrationCtrl', function ($scope, $rootScope, $ionicModal, $i
     }else{
       meal.mID = 1;
     }
-    
-    console.log('meal id ' + meal.mID);
-    console.log('meal length ' + registration.meals.length);
-    console.log(meal);
-    
+       
     registration.meals.push(angular.copy(meal));
-    console.log(registration.meals);
+
     Registrations.save($scope.registrations);
     $ionicLoading.show({ template: 'Tilføjet', noBackdrop: true, duration: 400 });
   };
