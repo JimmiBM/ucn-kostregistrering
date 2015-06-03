@@ -368,7 +368,19 @@ app.run(function($ionicPlatform, $location) {
         { "id": 93, "cat": "drink", "name": "500 ml. Fresubin energi fiber", "energy": 3150, "protein": 30 },
         { "id": 36, "cat": "lunch", "name": "1 port. salat", "energy": 130, "protein": 0.5 }
     ]}];
-    
+	
+    var afternoonSnackRecommendations = [
+    {
+      "recID": 1,
+      "totalProtein": 17,
+	  "totalEnergi": 1790,
+      "meals": [
+        { "id": 1, "cat": "breakfast", "name": "1 stk. franskbrød smurt", "energy": 330, "protein": 2.5 },
+		{ "id": 1, "cat": "breakfast", "name": "1 stk. franskbrød smurt", "energy": 330, "protein": 2.5 },
+		{ "id": 1, "cat": "breakfast", "name": "1 stk. franskbrød smurt", "energy": 330, "protein": 2.5 },
+		{ "id": 90, "cat": "drink", "name": "125 ml. Fresubin yocrème", "energy": 800, "protein": 9.5 }
+	]}];
+	
     var dinnerRecommendations = [
     {
       "recID": 1,
@@ -452,6 +464,17 @@ app.run(function($ionicPlatform, $location) {
       "meals": [ 
         { "id": 87, "cat": "drink", "name": "200 ml. F protein energi drink", "energy": 1260, "protein": 20 },
     ]}];
+	
+	var nightSnackRecommendations = [
+    {
+      "recID": 1,
+      "totalProtein": 16,
+	  "totalEnergi": 1600,
+      "meals": [
+        { "id": 64, "cat": "snack", "name": "1 burgerbolle med fyld", "energy": 1260, "protein": 15 },
+		{ "id": 70, "cat": "drink", "name": "175 ml. juice", "energy": 340, "protein": 1 }
+		
+	]}];
    
      window.localStorage['meals'] = angular.toJson(meals);
      window.localStorage['users'] = angular.toJson(users);
