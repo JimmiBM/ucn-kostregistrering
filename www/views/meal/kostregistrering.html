@@ -11,19 +11,19 @@
   <ion-content>
     <ul class="list" > <!--ng-repeat="meal in meals" -->
       <li class="item item-divider">Morgenmad</li>
-      <li class="item" ng-repeat="meal in registration.meals | filter: { cat: 'breakfast' }">
+      <li class="item" ng-repeat="meal in registration.meals | filter: { cat: 'breakfast' } track by meal.mID">
         <div class="amount">
         </div>
         <h2 style="font-weight:bold;">{{meal.name}} <span style="float:right"><a class="" ng-click="removeMealFromRegistration({{meal.mID}})" href="">FJERN</a></span></h2>
         <div class="item range ">
-          Spist ca.: <input type="range" name="rangeSlider" min="0" max="100" value="{{meal.amount}}" step="25" ng-model="meal.amount"> 
+         {{meal.mID}} Spist ca.: <input type="range" name="rangeSlider" min="0" max="100" value="{{meal.amount}}" step="25" ng-model="meal.amount"> 
             {{meal.amount}} %
              
         </div>     
       </li>
       
       <li class="item item-divider">Frokost</li>
-      <li class="item" ng-repeat="meal in registration.meals | filter: { cat: 'lunch' }">
+      <li class="item" ng-repeat="meal in registration.meals | filter: { cat: 'lunch' } track by meal.mID">
         <div class="amount">
         </div>
         <h2 style="font-weight:bold;">{{meal.name}} <span style="float:right"><a ng-click="removeMealFromRegistration({{meal.mID}})" href="">FJERN</a></span></h2>
@@ -34,7 +34,7 @@
       </li>
       
       <li class="item item-divider">Aftensmad</li>
-      <li class="item" ng-repeat="meal in registration.meals | filter: { cat: 'dinner' }">
+      <li class="item" ng-repeat="meal in registration.meals | filter: { cat: 'dinner' } track by meal.mID">
         <div class="amount">
         </div>
         <h2 style="font-weight:bold;">{{meal.name}} <span style="float:right"><a ng-click="removeMealFromRegistration({{meal.mID}})" href="">FJERN</a></span></h2>
@@ -45,7 +45,7 @@
       </li>
       
       <li class="item item-divider">Mellemmåltid</li>
-      <li class="item" ng-repeat="meal in registration.meals | filter: { cat: 'snack' }">
+      <li class="item" ng-repeat="meal in registration.meals | filter: { cat: 'snack' } track by meal.mID">
         <div class="amount">
         </div>
         <h2 style="font-weight:bold;">{{meal.name}} <span style="float:right"><a ng-click="removeMealFromRegistration({{meal.mID}})" href="">FJERN</a></span></h2>
@@ -56,7 +56,7 @@
       </li>
       
       <li class="item item-divider">Drikkevarer</li>
-      <li class="item" ng-repeat="meal in registration.meals | filter: { cat: 'drink' }">
+      <li class="item" ng-repeat="meal in registration.meals | filter: { cat: 'drink' } track by meal.mID">
         <div class="amount">
         </div>
         <h2 style="font-weight:bold;">{{meal.name}} <span style="float:right"><a ng-click="removeMealFromRegistration({{meal.mID}})" href="">FJERN</a></span></h2>
