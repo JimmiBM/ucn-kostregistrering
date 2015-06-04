@@ -1,0 +1,22 @@
+<ion-view title="Kostregistreringer" ng-controller="RegistrationCtrl" ng-class="RegistrationCtrl">
+  <ion-content>
+    <ul class="list">
+      <a href="#" ng-click="checkToCreateReg()" class="item item-icon-left item-icon-right">
+      		<i class="icon ion-plus-round"></i>
+      		Opret kostregistrering
+          <i class="icon ion-arrow-right-c"></i>
+      	</a>
+      <div class="item item-divider">
+      		Kostregistreringer
+      	</div>
+      <li class="item" ng-show="!loggedInUserRegistrations.length">Der er ingen registreringer endnu</li>
+        <li style="list-style: none" ng-repeat="reg in loggedInUserRegistrations | filter:{ userSSN: loggedInUser.SSN } | orderBy: '-rID'">
+          <a class="item item-icon-right" ng-click="goToReg({{reg.rID}})" href="#">
+            {{ reg.title }}
+            <i class="icon ion-arrow-right-c"></i>
+          </a>
+        </li>
+              
+    </ul>
+  </ion-content>
+</ion-view>

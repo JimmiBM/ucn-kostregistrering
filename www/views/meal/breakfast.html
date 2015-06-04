@@ -1,0 +1,25 @@
+<ion-view>
+  <ion-content >
+    <div class="list list-inset">
+      <label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" placeholder="Søg" ng-model="mealSearch">
+      </label>
+    </div>
+    
+    <ul class="list" > <!--ng-repeat="meal in meals" -->
+      <li class="item item-divider">Morgenmad</li>
+      <li class="item" ng-repeat="meal in breakfastList | filter:{ name: mealSearch }">
+        <div class="amount">
+          
+          <button class="button-icon icon ion-plus-circled" ng-click="addMealToRegistration({{registration.rID}}, {{meal.id}})"></button>
+
+        </div>
+        <h2 style="font-weight:bold;">{{meal.name}}</h2>
+        <h2>Protein: {{meal.protein}}</h2>
+        <h2>kJ: {{meal.energy}}</h2>
+      </li>
+    </ul>
+	
+  </ion-content>
+</ion-view>
