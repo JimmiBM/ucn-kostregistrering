@@ -122,6 +122,36 @@ describe("MealRecommendationCtrl", function() {
         expect(firstSnackID).toEqual(48);
     });
     
+    it("should show breakfast before 11am", function() {
+        var recommendations = scope.getMealRecommendations(10);
+        var firstSnackID = recommendations[0].meals[0].id;
+        expect(firstSnackID).toEqual(2);
+    });
+    
+    it("should show lunch before 2pm", function() {
+        var recommendations = scope.getMealRecommendations(13);
+        var firstSnackID = recommendations[0].meals[0].id;
+        expect(firstSnackID).toEqual(28);
+    });
+    
+    it("should show afternoon snack before 5pm", function() {
+        var recommendations = scope.getMealRecommendations(16);
+        var firstSnackID = recommendations[0].meals[0].id;
+        expect(firstSnackID).toEqual(1);
+    }); 
+    
+    it("should show dinner before 8pm", function() {
+        var recommendations = scope.getMealRecommendations(19);
+        var firstSnackID = recommendations[0].meals[0].id;
+        expect(firstSnackID).toEqual(43);
+    }); 
+    
+    it("should show snacks before 11pm", function() {
+        var recommendations = scope.getMealRecommendations(23);
+        var firstSnackID = recommendations[0].meals[0].id;
+        expect(firstSnackID).toEqual(64);
+    }); //23
+    
     it("shouldn't show any registrations if a patient have allready consumed all the protein needed for a day", function() {
         scope.loggedInUser = {"SSN": 3333, "weight": 100};
         window.localStorage['loggedInUser'] = angular.toJson(scope.loggedInUser);
