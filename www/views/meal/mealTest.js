@@ -194,6 +194,7 @@ describe("MealRecommendationCtrl", function() {
         
         expect(scope.getMealRecommendations(5).length).toEqual(1);
     });
+    
     it("should show all of the snack recommendations if a patient haven't consumed any of the protein needed for a day", function() {
         scope.loggedInUser = {"SSN": 3333, "weight": 100};
         window.localStorage['loggedInUser'] = angular.toJson(scope.loggedInUser);
@@ -207,6 +208,70 @@ describe("MealRecommendationCtrl", function() {
           "title": weekday[today.getDay()] + " d. " + today.getDate() + ". " + monthname[today.getMonth()] + " " + today.getFullYear(),
           "date": today,
           "meals": [{ "id": 55, "cat": "snack", "name": "1 spsk. nøddemix", "energy": 710, "protein": 0, "amount": 100 }]
+        };
+        scope.registrations.push(angular.copy(newRegistration));   
+        window.localStorage['registrations'] = angular.toJson(scope.registrations);   
+        window.localStorage['chosenRegID'] = angular.toJson(newRegistration.rID);
+        
+        expect(scope.getMealRecommendations(5).length).toEqual(5);
+    });
+    
+    it("shouldn't show any registrations if a patient have allready consumed all the protein needed for a day", function() {
+        scope.loggedInUser = {"SSN": 3333, "weight": 100};
+        window.localStorage['loggedInUser'] = angular.toJson(scope.loggedInUser);
+        var today = new Date();
+        var weekday=new Array("Søndag","Mandag","Tirsdag","Onsdag","Torsdag","Fredag","Lørdag");
+        var monthname=new Array("Januar","Februar","Marts","April","Maj","Juni","Juli","August","September","October","November","December");
+        var newRegistration = 
+        { 
+          "rID": 100, 
+          "userSSN": parseInt(scope.loggedInUser.SSN),
+          "title": weekday[today.getDay()] + " d. " + today.getDate() + ". " + monthname[today.getMonth()] + " " + today.getFullYear(),
+          "date": today,
+          "meals": [{ "id": 55, "cat": "snack", "name": "1 spsk. nøddemix", "energy": 8500, "protein": 0, "amount": 100 }]
+        };
+        scope.registrations.push(angular.copy(newRegistration));   
+        window.localStorage['registrations'] = angular.toJson(scope.registrations);   
+        window.localStorage['chosenRegID'] = angular.toJson(newRegistration.rID);
+        
+        expect(scope.getMealRecommendations(5).length).toEqual(0);
+        
+    });
+    
+    it("should only show one of the snack recommendations if a patient have allready consumed most of the energy needed for a day", function() {
+        scope.loggedInUser = {"SSN": 3333, "weight": 100};
+        window.localStorage['loggedInUser'] = angular.toJson(scope.loggedInUser);
+        var today = new Date();
+        var weekday=new Array("Søndag","Mandag","Tirsdag","Onsdag","Torsdag","Fredag","Lørdag");
+        var monthname=new Array("Januar","Februar","Marts","April","Maj","Juni","Juli","August","September","October","November","December");
+        var newRegistration = 
+        { 
+          "rID": 100, 
+          "userSSN": parseInt(scope.loggedInUser.SSN),
+          "title": weekday[today.getDay()] + " d. " + today.getDate() + ". " + monthname[today.getMonth()] + " " + today.getFullYear(),
+          "date": today,
+          "meals": [{ "id": 55, "cat": "snack", "name": "1 spsk. nøddemix", "energy": 7400, "protein": 0, "amount": 100 }]
+        };
+        scope.registrations.push(angular.copy(newRegistration));   
+        window.localStorage['registrations'] = angular.toJson(scope.registrations);   
+        window.localStorage['chosenRegID'] = angular.toJson(newRegistration.rID);
+        
+        expect(scope.getMealRecommendations(5).length).toEqual(1);
+    });
+    
+    it("should show all of the snack recommendations if a patient haven't consumed any of the energy needed for a day", function() {
+        scope.loggedInUser = {"SSN": 3333, "weight": 100};
+        window.localStorage['loggedInUser'] = angular.toJson(scope.loggedInUser);
+        var today = new Date();
+        var weekday=new Array("Søndag","Mandag","Tirsdag","Onsdag","Torsdag","Fredag","Lørdag");
+        var monthname=new Array("Januar","Februar","Marts","April","Maj","Juni","Juli","August","September","October","November","December");
+        var newRegistration = 
+        { 
+          "rID": 100, 
+          "userSSN": parseInt(scope.loggedInUser.SSN),
+          "title": weekday[today.getDay()] + " d. " + today.getDate() + ". " + monthname[today.getMonth()] + " " + today.getFullYear(),
+          "date": today,
+          "meals": [{ "id": 55, "cat": "snack", "name": "1 spsk. nøddemix", "energy": 0, "protein": 0, "amount": 100 }]
         };
         scope.registrations.push(angular.copy(newRegistration));   
         window.localStorage['registrations'] = angular.toJson(scope.registrations);   
