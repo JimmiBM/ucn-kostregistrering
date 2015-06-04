@@ -1,0 +1,41 @@
+<ion-modal-view ng-controller="UserCtrl">
+  <ion-header-bar class="bar-dark">
+  
+      <button class="button-icon icon ion-close-round" ng-click="cancelCreate()"></button>
+    
+    <h1 class="title">Opret bruger</h1>
+  
+
+  </ion-header-bar>
+  <ion-content>
+    <div class="list">
+	  <label class="item item-input item-stacked-label">
+	    <span class="input-label">Fornavn</span>
+	    <input type="text" placeholder="Jens" ng-model="userToCreate.firstname">
+	  </label>
+	  <label class="item item-input item-stacked-label">
+	    <span class="input-label">Efternavn</span>
+	    <input type="text" placeholder="Jensen" ng-model="userToCreate.surname">
+	  </label>
+	  <label class="item item-input item-stacked-label">
+	    <span class="input-label">CPR</span>
+	    <input type="text" placeholder="1111912525" ng-model="userToCreate.SSN">
+	  </label>
+	  <label class="item item-input item-stacked-label">
+	    <span class="input-label">Email</span>
+	    <input type="text" placeholder="jens@jensen.com" ng-model="userToCreate.email">
+	  </label>
+    <label class="item item-input item-stacked-label">
+	    <span class="input-label">Vægt i kg</span>
+	    <input type="text" placeholder="80" ng-model="userToCreate.weight">
+	  </label>
+	  <label class="item item-input item-stacked-label">
+	    <span class="input-label">Adgangskode</span>
+	    <input type="password" placeholder="" ng-model="userToCreate.password">
+	  </label>
+    <button class="button button-full button-balanced" ng-click="createUser(userToCreate)">
+      Opret
+    </button>
+	</div>
+  </ion-content>
+</ion-modal-view>
