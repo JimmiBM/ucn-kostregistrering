@@ -1,4 +1,4 @@
-<ion-view title="Kostregistreringer">
+<ion-view title="Rediger information">
 
   <!-- http://ionicframework.com/docs/api/directive/ionNavBackButton/ for funktionalitet -->
   <ion-nav-buttons side="right">      
@@ -12,25 +12,29 @@
     <div class="list">
 	  <label class="item item-input item-stacked-label">
 	    <span class="input-label">Fornavn</span>
-	    <input type="text" placeholder="Jens" value="{{ loggedInUser.firstname }}">
+	    <input type="text" placeholder="Jens" ng-model="userToEdit.firstname">
 	  </label>
 	  <label class="item item-input item-stacked-label">
 	    <span class="input-label">Efternavn</span>
-	    <input type="text" placeholder="Jensen" value="{{ loggedInUser.surname }}">
+	    <input type="text" placeholder="Jensen" ng-model="userToEdit.surname">
 	  </label>
 	  <label class="item item-input item-stacked-label">
 	    <span class="input-label">CPR</span>
-	    <input type="text" placeholder="1111912525" value="{{ loggedInUser.SSN }}">
+	    <input type="text" placeholder="1111912525" ng-model="userToEdit.SSN">
 	  </label>
 	  <label class="item item-input item-stacked-label">
 	    <span class="input-label">Email</span>
-	    <input type="text" placeholder="jens@jensen.com" value="{{ loggedInUser.email }}">
+	    <input type="text" placeholder="jens@jensen.com" ng-model="userToEdit.email">
+	  </label>
+    <label class="item item-input item-stacked-label">
+	    <span class="input-label">Vægt i kg</span>
+	    <input type="text" placeholder="80" ng-model="userToEdit.weight">
 	  </label>
 	  <label class="item item-input item-stacked-label">
 	    <span class="input-label">Adgangskode</span>
-	    <input type="password" placeholder=""value="{{ loggedInUser.password }}">
+	    <input type="password" placeholder="" ng-model="userToEdit.password">
 	  </label>
-    <button class="button button-full button-balanced" ng-click="newUser()">
+    <button class="button button-full button-balanced" ng-click="editUser(userToEdit)">
       Gem ændringer
     </button>
 	</div>

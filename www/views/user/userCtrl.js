@@ -57,9 +57,46 @@ app.controller('UserCtrl', function ($scope, $ionicPopup, Users, $filter, $windo
   
  if(window.localStorage['loggedInUser']) {
   	  $ionicSideMenuDelegate.canDragContent(true);
+      $scope.userToEdit = getUserBySSN($scope.loggedInUser.SSN);
   }else{
   	  $ionicSideMenuDelegate.canDragContent(false);
   } 
+  
+  $scope.validateUser = function(user) {
+    if(user.firstname && user.surname && user.SSN && user.email && user.weight
+    && user.password) {
+      if(Number.isInteger(parseInt(user.SSN)) &&  Number.isInteger(parseInt(user.weight))) {
+        return 1;
+      }else{
+        return 2;
+      }
+      
+    }else {
+      return 3;
+    }
+  }
+  
+  $scope.showAlert = function(theTitle, theText) {
+       var alertPopup = $ionicPopup.alert({
+         title: theTitle,
+         template: theText
+       });
+      };
+ 
+  
+  $scope.editUser = function(user) {
+    
+    if($scope.validateUser(user) == 1) {
+      window.localStorage['loggedInUser'] = angular.toJson(user);
+      Users.save($scope.users);
+      $scope.showAlert('Success', 'Informationerne er blevet gemt');
+    }else if($scope.validateUser(user) == 2) {
+      $scope.showAlert('Fejl', 'CPR og/eller vægt i kg skal være i hele tal');
+    }else if($scope.validateUser(user) == 3) {
+      $scope.showAlert('Fejl', 'Alle felter skal udfyldes.');
+    }        
+  }
+  
   
   
 });
