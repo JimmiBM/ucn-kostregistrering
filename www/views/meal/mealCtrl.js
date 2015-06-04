@@ -223,6 +223,17 @@ app.controller('MealRecommendationCtrl', function($scope, Meals, $window, $ionic
   };
   proteinToday = proteinConsumedToday();
   
+  var energyConsumedToday = function(){
+    var energy = 0;
+    if(todaysReg.meals != undefined && todaysReg.meals.length > 0) {
+      todaysReg.meals.forEach(function(meal){
+        energy += meal.energy * meal.amount / 100;
+      });
+    }
+    return energy;
+  };
+  energyToday = energyConsumedToday();
+  
   $scope.mealEnergy = function(meals){
     var energy = 0;
     if(meals != undefined){
