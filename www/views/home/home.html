@@ -19,6 +19,10 @@
     			<div class="col-50">Resterende protein:</div>
     			<div class="col-50">{{ proteinNeeded(1) }} g</div>
     		</div>
+        <div class="row">
+    			<div class="col-50">Resterende energi:</div>
+    			<div class="col-50">{{ energyNeeded() }} Kj</div>
+    		</div>
       </div>
     </div>
 
@@ -53,8 +57,8 @@
       <div ng-repeat="recommendation in mealRecommendations">
         <li class="item">
           <h2>Rettens navn: {{mealName}} {{recommendation.recID}}</h2>
-          <h4>Protein: {{ mealProtein(recommendation.meals) }}</h4>
-          <h4>Energi: {{mealEnergy(recommendation.meals)}}</h4>
+          <h4>Protein: {{ mealProtein(recommendation.meals) }} g</h4>
+          <h4>Energi: {{mealEnergy(recommendation.meals)}} Kj</h4>
           <br/>
           <div class="row">
             <div class="col-67"><p>Rettens indhold</p></div>
