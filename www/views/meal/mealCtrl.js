@@ -170,10 +170,10 @@ app.controller('RegistrationCtrl', function ($scope, $rootScope, $ionicModal, $i
 });
 
 app.controller('MealRecommendationCtrl', function($scope, Meals, $window, $ionicSideMenuDelegate, Registrations, $filter){
-	var loggedInUser = angular.fromJson(window.localStorage['loggedInUser']);
-  var registrations = Registrations.all();//get all registrations
-  var userRegistrations = $filter('filter')(registrations, {userSSN: parseInt(loggedInUser.SSN)});//Find registrations belonging to loggedinuser
-  var userWeight = loggedInUser.weight;
+	$scope.loggedInUser = angular.fromJson(window.localStorage['loggedInUser']);
+  $scope.registrations = Registrations.all();//get all registrations
+  //var userRegistrations = $filter('filter')($scope.registrations, {userSSN: parseInt($scope.loggedInUser.SSN)});//Find registrations belonging to loggedinuser
+  var userWeight = $scope.loggedInUser.weight;
 	var energyToday = 0;
   var proteinToday = 0;
   //Get the hour of the day
@@ -195,9 +195,9 @@ app.controller('MealRecommendationCtrl', function($scope, Meals, $window, $ionic
     var today = new Date();
     var weekday=new Array("Søndag","Mandag","Tirsdag","Onsdag","Torsdag","Fredag","Lørdag");
     var monthname=new Array("Januar","Februar","Marts","April","Maj","Juni","Juli","August","September","October","November","December");
-    var userSSN = loggedInUser.SSN;
+    var userSSN = $scope.loggedInUser.SSN;
     var title = weekday[today.getDay()] + " d. " + today.getDate() + ". " + monthname[today.getMonth()] + " " + today.getFullYear();
-    
+     var userRegistrations = $filter('filter')($scope.registrations, {userSSN: parseInt($scope.loggedInUser.SSN)});
     var todaysReg = {};
     if(userRegistrations.length > 0) {
       for(var i = userRegistrations.length - 1; i >= 0; i--) {
@@ -214,9 +214,10 @@ app.controller('MealRecommendationCtrl', function($scope, Meals, $window, $ionic
   //Calculate how much protein have been consumed today
   var proteinConsumedToday = function(){
     var protein = 0;
-    if(todaysReg.meals != undefined && todaysReg.meals.length > 0) {
-      todaysReg.meals.forEach(function(meal){
+    if(getTodaysReg().meals != undefined && getTodaysReg().meals.length > 0) {
+      getTodaysReg().meals.forEach(function(meal){
         protein += meal.protein * meal.amount / 100;
+        console.log(protein);
       });
     }
     return protein;
@@ -250,7 +251,7 @@ app.controller('MealRecommendationCtrl', function($scope, Meals, $window, $ionic
 	
   
 	$scope.proteinNeeded = function(proteinPerKilo){
-		return userWeight * proteinPerKilo - proteinToday;
+		return $scope.loggedInUser.weight * proteinPerKilo - proteinConsumedToday();
 	};
   
 	//Select recommendations to show depending on the hour of the day

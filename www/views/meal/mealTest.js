@@ -121,4 +121,28 @@ describe("MealRecommendationCtrl", function() {
         var firstSnackID = recommendations[0].meals[0].id;
         expect(firstSnackID).toEqual(48);
     });
+    
+    it("shouldn't show any registrations if a patient have allready consumed all the protein needed for a day", function() {
+        scope.loggedInUser = {"SSN": 3333, "weight": 100};
+        window.localStorage['loggedInUser'] = angular.toJson(scope.loggedInUser);
+        var today = new Date();
+        var weekday=new Array("Søndag","Mandag","Tirsdag","Onsdag","Torsdag","Fredag","Lørdag");
+        var monthname=new Array("Januar","Februar","Marts","April","Maj","Juni","Juli","August","September","October","November","December");
+        var newRegistration = 
+        { 
+          "rID": 100, 
+          "userSSN": parseInt(scope.loggedInUser.SSN),
+          "title": weekday[today.getDay()] + " d. " + today.getDate() + ". " + monthname[today.getMonth()] + " " + today.getFullYear(),
+          "date": today,
+          "meals": [{ "id": 55, "cat": "snack", "name": "1 spsk. nøddemix", "energy": 710, "protein": 110, "amount": 100 }]
+        };
+        //console.log(newRegistration.meals[0]);
+        scope.registrations.push(angular.copy(newRegistration));   
+        window.localStorage['registrations'] = angular.toJson(scope.registrations);   
+        window.localStorage['chosenRegID'] = angular.toJson(newRegistration.rID);
+        
+        console.log(scope.proteinNeeded(1));
+        expect(scope.getMealRecommendations(5).length).toEqual(0);
+        
+    });
 });
