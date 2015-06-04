@@ -224,6 +224,17 @@ app.controller('MealRecommendationCtrl', function($scope, Meals, $window, $ionic
   };
   proteinToday = proteinConsumedToday();
   
+  var energyConsumedToday = function(){
+    var energy = 0;
+    if(todaysReg.meals != undefined && todaysReg.meals.length > 0) {
+      todaysReg.meals.forEach(function(meal){
+        energy += meal.energy * meal.amount / 100;
+      });
+    }
+    return energy;
+  };
+  energyToday = energyConsumedToday();
+  
   $scope.mealEnergy = function(meals){
     var energy = 0;
     if(meals != undefined){
@@ -262,7 +273,7 @@ app.controller('MealRecommendationCtrl', function($scope, Meals, $window, $ionic
   		snackRecommendations.forEach(function(meal){
   			//recommend snacks that supply up to the remaining requirement of the day
         if($scope.mealProtein(meal.meals) < $scope.proteinNeeded(1)){
-  			  $scope.mealRecommendations.push(meal);
+  			  $scope.mealRecommendations.push(angular.copy(meal));
         }
   		});
     }
@@ -272,7 +283,7 @@ app.controller('MealRecommendationCtrl', function($scope, Meals, $window, $ionic
       breakfastRecommendations.forEach(function(meal){
         //recommend breakfast meals that supply up to a little over a fifth of the remaining requirement of the day
         if($scope.mealProtein(meal.meals) < $scope.proteinNeeded(1) * 0.25 && $scope.mealEnergy(meal.meals) < $scope.energyNeeded() * 0.25){
-  			  $scope.mealRecommendations.push(meal);
+  			  $scope.mealRecommendations.push(angular.copy(meal));
         }
   		});
   	}
@@ -282,7 +293,7 @@ app.controller('MealRecommendationCtrl', function($scope, Meals, $window, $ionic
       lunchRecommendations.forEach(function(meal){
         //recommend lunch meals that supply up to a little over half of the remaining requirement of the day
         if($scope.mealProtein(meal.meals) < $scope.proteinNeeded(1) * 0.45 && $scope.mealEnergy(meal.meals) < $scope.energyNeeded() * 0.45){
-  			  $scope.mealRecommendations.push(meal);
+  			  $scope.mealRecommendations.push(angular.copy(meal));
         }
   		});
   	}
@@ -292,7 +303,7 @@ app.controller('MealRecommendationCtrl', function($scope, Meals, $window, $ionic
       lateLunchRecommendations.forEach(function(meal){
         //recommend lunch meals that supply up to a little over half of the remaining requirement of the day
         if($scope.mealProtein(meal.meals) < $scope.proteinNeeded(1) * 0.65 && $scope.mealEnergy(meal.meals) < $scope.energyNeeded() * 0.65){
-  			  $scope.mealRecommendations.push(meal);
+  			  $scope.mealRecommendations.push(angular.copy(meal));
         }
   		});
     }
@@ -302,7 +313,7 @@ app.controller('MealRecommendationCtrl', function($scope, Meals, $window, $ionic
   		dinnerRecommendations.forEach(function(meal){
         //recommend dinner meals that supply up to a little over the remaining requirement of the day
         if($scope.mealProtein(meal.meals) < $scope.proteinNeeded(1) * 0.85 && $scope.mealEnergy(meal.meals) < $scope.energyNeeded() * 0.85){
-  			  $scope.mealRecommendations.push(meal);
+  			  $scope.mealRecommendations.push(angular.copy(meal));
         }
       });
   	}
@@ -312,7 +323,7 @@ app.controller('MealRecommendationCtrl', function($scope, Meals, $window, $ionic
   		lateDinnerRecommendations.forEach(function(meal){
         //recommend dinner meals that supply up to a little over the remaining requirement of the day
         if($scope.mealProtein(meal.meals) < $scope.proteinNeeded(1) * 1.05 && $scope.mealEnergy(meal.meals) < $scope.energyNeeded() * 1.05){
-  			  $scope.mealRecommendations.push(meal);
+  			  $scope.mealRecommendations.push(angular.copy(meal));
         }
       });
   	}
@@ -322,7 +333,7 @@ app.controller('MealRecommendationCtrl', function($scope, Meals, $window, $ionic
   		snackRecommendations.forEach(function(meal){
   			//recommend snacks that supply up to the remaining requirement of the day
         if(meal.totalProtein < $scope.proteinNeeded(1)){
-  			  $scope.mealRecommendations.push(meal);
+  			  $scope.mealRecommendations.push(angular.copy(meal));
         }
   		});
     }
