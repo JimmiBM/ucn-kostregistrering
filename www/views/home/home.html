@@ -47,8 +47,8 @@
     </div>
 
     <div class="list card">
-      <div class="item item-divider">
-        Madforslag {{getMealRec()}}
+      <div class="item item-divider" data-ng-init="getMealRec()">
+        Madforslag 
       </div>
       <div ng-repeat="recommendation in mealRecommendations">
         <li class="item">
