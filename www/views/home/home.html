@@ -19,6 +19,10 @@
     			<div class="col-50">Resterende protein:</div>
     			<div class="col-50">{{ proteinNeeded(1) }} g</div>
     		</div>
+        <div class="row">
+    			<div class="col-50">Resterende energi:</div>
+    			<div class="col-50">{{ energyNeeded() }} Kj</div>
+    		</div>
       </div>
     </div>
 
@@ -47,31 +51,32 @@
     </div>
 
     <div class="list card">
-      <div class="item item-divider">
-        Madforslag {{getMealRec()}}
+      <div class="item item-divider" data-ng-init="getMealRec()">
+        Madforslag 
       </div>
       <div ng-repeat="recommendation in mealRecommendations">
-        <li class="item">
+        <li class="item" ng-style="{'margin-bottom': '2px'}">
           <h2>Rettens navn: {{mealName}} {{recommendation.recID}}</h2>
-          <h4>Protein: {{ mealProtein(recommendation.meals) }}</h4>
-          <h4>Energi: {{mealEnergy(recommendation.meals)}}</h4>
-          <br/>
-          <div class="row">
+          <h3>Protein: {{ mealProtein(recommendation.meals) }} g</h4>
+          <h3>Energi: {{mealEnergy(recommendation.meals)}} Kj</h4>
+          <div class="row" ng-style="{'height': '25px'}">
             <div class="col-67"><p>Rettens indhold</p></div>
             <div class="col"><p>Protein</p></div>
             <div class="col"><p>Energi</p></div>
           </div>
           <hr/>
-          <div ng-repeat="meal in recommendation.meals">
-            <div class="row">
-              <div class="col-67">
-                <p>{{meal.name}}</p>
-              </div>
-              <div class="col">
-                <p>{{meal.protein}} g</p>
-              </div>
-              <div class="col">
-                <p>{{meal.energy}} Kj</p>
+          <div ng-style="{'margin-bottom': '25px'}">
+            <div ng-repeat="meal in recommendation.meals">
+              <div class="row" ng-style="{'height': '25px'}">
+                <div class="col-67">
+                  <p>{{meal.name}}</p>
+                </div>
+                <div class="col">
+                  <p>{{meal.protein}} g</p>
+                </div>
+                <div class="col">
+                  <p>{{meal.energy}} Kj</p>
+                </div>
               </div>
             </div>
           </div>
