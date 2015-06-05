@@ -1,4 +1,4 @@
-<ion-modal-view ng-controller="UserCtrl">
+<ion-modal-view>
   <ion-header-bar class="bar-dark">
   
       <button class="button-icon icon ion-close-round" ng-click="cancelCreate()"></button>
@@ -8,7 +8,7 @@
 
   </ion-header-bar>
   <ion-content>
-  <form name="createForm" ng-submit="createUser(userToCreate)" novalidate="">
+  <form name="form.createForm" ng-submit="createUser(userToCreate)" novalidate="">
     <div class="list">
 	  <label class="item item-input item-stacked-label">
 	    <span class="input-label">Fornavn</span>
@@ -18,9 +18,9 @@
 	    <span class="input-label">Efternavn</span>
 	    <input type="text" placeholder="Jensen" ng-model="userToCreate.surname">
 	  </label>
-	  <label class="item item-input item-stacked-label">
+	  <label class="item item-input item-stacked-label"  ng-class="{ 'has-error' : createForm.iSSN.$invalid }">
 	    <span class="input-label">CPR</span>
-	    <input name="iSSN" placeholder="1111912525" type="number" ng-model="userToCreate.SSN">
+	    <input name="iSSN" placeholder="1111912525" type="text" ng-model="userToCreate.SSN" ng-minlength="10" required data-ng-pattern="/^[0-9]{1,10}$/">
 	  </label>
 	  <label class="item item-input item-stacked-label">
 	    <span class="input-label">Email</span>
@@ -28,7 +28,7 @@
 	  </label>
     <label class="item item-input item-stacked-label">
 	    <span class="input-label">Vægt i kg</span>
-	    <input type="text" placeholder="80" ng-model="userToCreate.weight">
+	    <input type="text" placeholder="80" ng-model="userToCreate.weight" ng-minlength="1" required data-ng-pattern="/^[0-9]{1,6}$/">
 	  </label>
 	  <label class="item item-input item-stacked-label">
 	    <span class="input-label">Adgangskode</span>

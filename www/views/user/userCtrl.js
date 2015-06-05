@@ -42,6 +42,7 @@ app.controller('UserCtrl', function ($scope, $ionicPopup, Users, $filter, $windo
     createUser();
   };
   
+  
   // Called to get user by SIN
   $scope.getUser = function(cpr) {
     return getUserBySSN(cpr);
@@ -63,14 +64,9 @@ app.controller('UserCtrl', function ($scope, $ionicPopup, Users, $filter, $windo
   } 
   
   $scope.validateUser = function(user) {
-    if(user.firstname && user.surname && user.SSN && user.email && user.weight
+    if(user.firstname && user.surname && user.email
     && user.password) {
-      if(Number.isInteger(parseInt(user.SSN)) &&  Number.isInteger(parseInt(user.weight))) {
-        return 1;
-      }else{
-        return 2;
-      }
-      
+        return 1;     
     }else {
       return 3;
     }
@@ -89,13 +85,18 @@ app.controller('UserCtrl', function ($scope, $ionicPopup, Users, $filter, $windo
        
       };
  
+  $scope.form = {};
   
   $scope.editUser = function(user) {
     
     if($scope.validateUser(user) == 1) {
-      window.localStorage['loggedInUser'] = angular.toJson(user);
-      Users.save($scope.users);
-      $scope.showAlert('Success', 'Informationerne er blevet gemt.', false);
+      if($scope.form.editForm.$valid) {
+        window.localStorage['loggedInUser'] = angular.toJson(user);
+        Users.save($scope.users);
+        $scope.showAlert('Success', 'Informationerne er blevet gemt.', false);
+      }else {
+        $scope.showAlert('Fejl', 'CPR og/eller vægt i kg skal være i hele tal.', false);
+      }
     }else if($scope.validateUser(user) == 2) {
       $scope.showAlert('Fejl', 'CPR og/eller vægt i kg skal være i hele tal.', false);
     }else if($scope.validateUser(user) == 3) {
@@ -104,28 +105,22 @@ app.controller('UserCtrl', function ($scope, $ionicPopup, Users, $filter, $windo
   }
   
   $scope.createUser = function(user) {
-   // var valid = element(by.binding('createForm.iSSN.$valid'));
-    console.log(createForm.iSSN.$valid);
-    console.log("knappetryk")
     
-    $scope.$watch('createForm', function(theForm) {
-        if(theForm) { 
-            console.log("i scope")
-        }
-        else {
-            console.log("ikke i scope")
-        }        
-    });
-    
-//    if($scope.validateUser(user) == 1) {
-//      $scope.users.push(angular.copy(user));
-//      Users.save($scope.users);
-//      $scope.showAlert('Success', 'Din profil er oprettet og du kan nu logge ind.', true);
-//    }else if($scope.validateUser(user) == 2) {
-//      $scope.showAlert('Fejl', 'CPR og/eller vægt i kg skal være i hele tal.', false);
-//    }else if($scope.validateUser(user) == 3) {
-//      $scope.showAlert('Fejl', 'Alle felter skal udfyldes.', false);
-//    }        
+    if($scope.validateUser(user) == 1) {
+      if($scope.form.createForm.$valid) {
+        $scope.users.push(angular.copy(user));
+        Users.save($scope.users);
+        $scope.showAlert('Success', 'Din profil er oprettet og du kan nu logge ind.', true);
+      }else {
+        $scope.showAlert('Fejl', 'CPR og/eller vægt i kg skal være i hele tal.', false);
+      }
+      
+    }else if($scope.validateUser(user) == 2) {
+      $scope.showAlert('Fejl', 'CPR og/eller vægt i kg skal være i hele tal.', false);
+    }else if($scope.validateUser(user) == 3) {
+      $scope.showAlert('Fejl', 'Alle felter skal udfyldes.', false);
+    }
+       
   }
   
   $scope.openCreate = function(){

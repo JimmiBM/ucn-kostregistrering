@@ -10,6 +10,7 @@
 
   <ion-content ng-controller="UserCtrl">
     <div class="list">
+      <form name="form.editForm" ng-submit="editUser(userToEdit)" novalidate="">
 	  <label class="item item-input item-stacked-label">
 	    <span class="input-label">Fornavn</span>
 	    <input type="text" placeholder="Jens" ng-model="userToEdit.firstname">
@@ -20,7 +21,7 @@
 	  </label>
 	  <label class="item item-input item-stacked-label">
 	    <span class="input-label">CPR</span>
-	    <input type="text" placeholder="1111912525" ng-model="userToEdit.SSN">
+	    <input type="text" placeholder="1111912525" ng-model="userToEdit.SSN" ng-minlength="10" required data-ng-pattern="/^[0-9]{1,10}$/">
 	  </label>
 	  <label class="item item-input item-stacked-label">
 	    <span class="input-label">Email</span>
@@ -28,15 +29,16 @@
 	  </label>
     <label class="item item-input item-stacked-label">
 	    <span class="input-label">Vægt i kg</span>
-	    <input type="text" placeholder="80" ng-model="userToEdit.weight">
+	    <input type="text" placeholder="80" ng-model="userToEdit.weight" ng-minlength="1" required data-ng-pattern="/^[0-9]{1,6}$/">
 	  </label>
 	  <label class="item item-input item-stacked-label">
 	    <span class="input-label">Adgangskode</span>
 	    <input type="password" placeholder="" ng-model="userToEdit.password">
 	  </label>
-    <button class="button button-full button-balanced" ng-click="editUser(userToEdit)">
+    <button class="button button-full button-balanced" type="submit">
       Gem ændringer
     </button>
+      </form>
 	</div>
   </ion-content> 
 </ion-view>
