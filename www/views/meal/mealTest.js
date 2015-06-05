@@ -137,7 +137,7 @@ describe("MealRecommendationCtrl", function() {
     it("should show afternoon snack before 5pm", function() {
         var recommendations = scope.getMealRecommendations(16);
         var firstSnackID = recommendations[0].meals[0].id;
-        expect(firstSnackID).toEqual(1);
+        expect(firstSnackID).toEqual(48);
     }); 
     
     it("should show dinner before 8pm", function() {
@@ -149,7 +149,7 @@ describe("MealRecommendationCtrl", function() {
     it("should show snacks before 11pm", function() {
         var recommendations = scope.getMealRecommendations(23);
         var firstSnackID = recommendations[0].meals[0].id;
-        expect(firstSnackID).toEqual(64);
+        expect(firstSnackID).toEqual(48);
     }); 
     
     it("shouldn't show any registrations if a patient have allready consumed all the protein needed for a day", function() {
