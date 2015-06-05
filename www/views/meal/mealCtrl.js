@@ -297,14 +297,14 @@ app.controller('MealRecommendationCtrl', function($scope, Meals, $window, $ionic
     else if(hour < 17)
     {
       $scope.mealName = "Eftermiddagsmad";
-      lateLunchRecommendations.forEach(function(meal){
+      snackRecommendations.forEach(function(meal){
         //recommend lunch meals that supply up to a little over half of the remaining requirement of the day
         if($scope.mealProtein(meal.meals) < proteinLeft * 0.65 && $scope.mealEnergy(meal.meals) < energyLeft * 0.65){
   			  $scope.mealRecommendations.push(angular.copy(meal));
         }
   		});
     }
-  	else if(hour < 20)
+  	else if(hour < 21)
   	{
       $scope.mealName = "Aftensmad";
   		dinnerRecommendations.forEach(function(meal){
@@ -317,7 +317,7 @@ app.controller('MealRecommendationCtrl', function($scope, Meals, $window, $ionic
   	else if(hour < 24)
   	{
       $scope.mealName = "Sen Aftensmad";
-  		lateDinnerRecommendations.forEach(function(meal){
+  		snackRecommendations.forEach(function(meal){
         //recommend dinner meals that supply up to a little over the remaining requirement of the day
         if($scope.mealProtein(meal.meals) < proteinLeft * 1.05 && $scope.mealEnergy(meal.meals) < energyLeft * 1.05){
   			  $scope.mealRecommendations.push(angular.copy(meal));
@@ -339,5 +339,5 @@ app.controller('MealRecommendationCtrl', function($scope, Meals, $window, $ionic
   
   $scope.getMealRec = function() {
     $scope.getMealRecommendations(currentHour);
-  }
+  };
 });
