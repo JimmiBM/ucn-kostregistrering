@@ -104,17 +104,28 @@ app.controller('UserCtrl', function ($scope, $ionicPopup, Users, $filter, $windo
   }
   
   $scope.createUser = function(user) {
-    //console.log(parseInt("43kd"));
+   // var valid = element(by.binding('createForm.iSSN.$valid'));
+    console.log(createForm.iSSN.$valid);
+    console.log("knappetryk")
     
-    if($scope.validateUser(user) == 1) {
-      $scope.users.push(angular.copy(user));
-      Users.save($scope.users);
-      $scope.showAlert('Success', 'Din profil er oprettet og du kan nu logge ind.', true);
-    }else if($scope.validateUser(user) == 2) {
-      $scope.showAlert('Fejl', 'CPR og/eller vægt i kg skal være i hele tal.', false);
-    }else if($scope.validateUser(user) == 3) {
-      $scope.showAlert('Fejl', 'Alle felter skal udfyldes.', false);
-    }        
+    $scope.$watch('createForm', function(theForm) {
+        if(theForm) { 
+            console.log("i scope")
+        }
+        else {
+            console.log("ikke i scope")
+        }        
+    });
+    
+//    if($scope.validateUser(user) == 1) {
+//      $scope.users.push(angular.copy(user));
+//      Users.save($scope.users);
+//      $scope.showAlert('Success', 'Din profil er oprettet og du kan nu logge ind.', true);
+//    }else if($scope.validateUser(user) == 2) {
+//      $scope.showAlert('Fejl', 'CPR og/eller vægt i kg skal være i hele tal.', false);
+//    }else if($scope.validateUser(user) == 3) {
+//      $scope.showAlert('Fejl', 'Alle felter skal udfyldes.', false);
+//    }        
   }
   
   $scope.openCreate = function(){

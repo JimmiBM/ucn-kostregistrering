@@ -8,6 +8,7 @@
 
   </ion-header-bar>
   <ion-content>
+  <form name="createForm" ng-submit="createUser(userToCreate)" novalidate="">
     <div class="list">
 	  <label class="item item-input item-stacked-label">
 	    <span class="input-label">Fornavn</span>
@@ -19,7 +20,7 @@
 	  </label>
 	  <label class="item item-input item-stacked-label">
 	    <span class="input-label">CPR</span>
-	    <input type="text" placeholder="1111912525" ng-model="userToCreate.SSN">
+	    <input name="iSSN" placeholder="1111912525" type="number" ng-model="userToCreate.SSN">
 	  </label>
 	  <label class="item item-input item-stacked-label">
 	    <span class="input-label">Email</span>
@@ -33,9 +34,10 @@
 	    <span class="input-label">Adgangskode</span>
 	    <input type="password" placeholder="" ng-model="userToCreate.password">
 	  </label>
-    <button class="button button-full button-balanced" ng-click="createUser(userToCreate)">
+    <button class="button button-full button-balanced" type="submit">
       Opret
     </button>
 	</div>
+  </form>
   </ion-content>
 </ion-modal-view>
