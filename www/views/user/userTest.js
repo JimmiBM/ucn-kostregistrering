@@ -51,6 +51,7 @@ describe("UserCtrl", function() {
         scope.login();
         expect(angular.fromJson(window.localStorage['loggedInUser']).SSN).toMatch("1234567890");
     }); 
+    
 
 //    it("should have types setup", function(){
 //        expect(scope.accountTypes.length).toBe(3);
