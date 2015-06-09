@@ -101,6 +101,6 @@
 		{ "cat": "drink", "name": "100 ml. SmofKaniven central", "energy": "460", "protein": "5,0" },
 		{ "cat": "drink", "name": "100 ml. SmofKaniven perifer", "energy": "300", "protein": "3,0" },
 		{ "cat": "drink", "name": "500 ml. Glukose 10%", "energy": "840", "protein": "0" },
-		{ "cat": "drink", "name": "NaCl", "energy": "-", "protein": "-" }
+		{ "cat": "drink", "name": "NaCl", "energy": "0", "protein": "0" }
       ]
 }

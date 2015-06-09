@@ -110,7 +110,7 @@ app.run(function($ionicPlatform, $location) {
         { "id": 6, "cat": "breakfast", "name": "1 skive 45+ ost", "energy": 270, "protein": 5 },
         { "id": 7, "cat": "breakfast", "name": "1 skive 30+ ost", "energy": 210, "protein": 6 },
         { "id": 8, "cat": "breakfast", "name": "1 port. smøreost", "energy": 210, "protein": 1.5 },
-		    { "id": 9, "cat": "breakfast", "name": "1 port. skimmelost", "energy": 210, "protein": 1.5 },
+		{ "id": 9, "cat": "breakfast", "name": "1 port. skimmelost", "energy": 210, "protein": 1.5 },
         { "id": 10, "cat": "breakfast", "name": "100 ml. havregrød", "energy": 420, "protein": 4 },
         { "id": 12, "cat": "breakfast", "name": "100 ml. øllebrød", "energy": 270, "protein": 1 },
         { "id": 13, "cat": "breakfast", "name": "1 spsk. piskefløde", "energy": 230, "protein": 0.5 },
@@ -207,10 +207,10 @@ app.run(function($ionicPlatform, $location) {
      ];  
      
      var users = [
-       {"SSN": "1234561111", "firstname": "Jimmi", "surname": "Noob", "email": "Jimmi@Noob.dk", "password": "divareaper", "weight": "70"},
-       {"SSN": "2234561113", "firstname": "Henrik", "surname": "SkylderBurgers", "email": "Henrik@burgers.dk", "password": "burgers", "weight": "70"},
-       {"SSN": "3234561115", "firstname": "Chrisian", "surname": "Kradse", "email": "Kradse@Schachner.dk", "password": "superlamas", "weight": "70"},
-       {"SSN": "1234567890", "firstname": "Test", "surname": "Test", "email": "Test@Eksempel.dk", "password": "1234", "weight": "80"}
+        {"SSN": "1234561111", "firstname": "Jimmi", "surname": "Noob", "email": "Jimmi@Noob.dk", "password": "divareaper", "weight": "70"},
+        {"SSN": "2234561113", "firstname": "Henrik", "surname": "SkylderBurgers", "email": "Henrik@burgers.dk", "password": "burgers", "weight": "70"},
+        {"SSN": "3234561115", "firstname": "Chrisian", "surname": "Kradse", "email": "Kradse@Schachner.dk", "password": "superlamas", "weight": "70"},
+        {"SSN": "1234567890", "firstname": "Test", "surname": "Test", "email": "Test@Eksempel.dk", "password": "1234", "weight": "80"}
      ];
      
      var registrations = [
@@ -308,12 +308,12 @@ app.run(function($ionicPlatform, $location) {
     {
     "recID": 2,
     "meals": [ 
-      { "id": 27, "cat": "lunch", "name": "100 ml. suppe, legeret", "energy": 300, "protein": 3 },
-      { "id": 31, "cat": "lunch", "name": "1 stk grovbrød", "energy": 340, "protein": 2.5 },
-      { "id": 30, "cat": "lunch", "name": "1 stk franskbrød", "energy": 340, "protein": 2.5 },
-      { "id": 32, "cat": "lunch", "name": "1 pk. kærgården", "energy": 315, "protein": 0 },
-      { "id": 34, "cat": "lunch", "name": "Pålæg til 1/2 stk. brød", "energy": 170, "protein": 4 },
-      { "id": 34, "cat": "lunch", "name": "Pålæg til 1/2 stk. brød", "energy": 170, "protein": 4 }
+        { "id": 27, "cat": "lunch", "name": "100 ml. suppe, legeret", "energy": 300, "protein": 3 },
+        { "id": 31, "cat": "lunch", "name": "1 stk grovbrød", "energy": 340, "protein": 2.5 },
+        { "id": 30, "cat": "lunch", "name": "1 stk franskbrød", "energy": 340, "protein": 2.5 },
+        { "id": 32, "cat": "lunch", "name": "1 pk. kærgården", "energy": 315, "protein": 0 },
+        { "id": 34, "cat": "lunch", "name": "Pålæg til 1/2 stk. brød", "energy": 170, "protein": 4 },
+        { "id": 34, "cat": "lunch", "name": "Pålæg til 1/2 stk. brød", "energy": 170, "protein": 4 }
     ]},
     {
       "recID": 3,
@@ -346,19 +346,19 @@ app.run(function($ionicPlatform, $location) {
       "recID": 1,
       "meals": [
         { "id": 1, "cat": "breakfast", "name": "1 stk. franskbrød smurt", "energy": 330, "protein": 2.5 },
-    		{ "id": 1, "cat": "breakfast", "name": "1 stk. franskbrød smurt", "energy": 330, "protein": 2.5 },
-    		{ "id": 1, "cat": "breakfast", "name": "1 stk. franskbrød smurt", "energy": 330, "protein": 2.5 },
-    		{ "id": 90, "cat": "drink", "name": "125 ml. Fresubin yocrème", "energy": 800, "protein": 9.5 }
+    	{ "id": 1, "cat": "breakfast", "name": "1 stk. franskbrød smurt", "energy": 330, "protein": 2.5 },
+    	{ "id": 1, "cat": "breakfast", "name": "1 stk. franskbrød smurt", "energy": 330, "protein": 2.5 },
+    	{ "id": 90, "cat": "drink", "name": "125 ml. Fresubin yocrème", "energy": 800, "protein": 9.5 }
 	   ]}];
     
     var dinnerRecommendations = [
     {
     "recID": 1,
     "meals": [ 
-      { "id": 43, "cat": "dinner", "name": "1 stk. frisk frugt", "energy": 230, "protein": 1 },
-      { "id": 43, "cat": "dinner", "name": "1 stk. frisk frugt", "energy": 230, "protein": 1 },
-      { "id": 42, "cat": "dinner", "name": "1 port. dessert", "energy": 1300, "protein": 7 },
-      { "id": 69, "cat": "drink", "name": "175 ml. kakaoskummetmælk", "energy": 420, "protein": 6 }
+        { "id": 43, "cat": "dinner", "name": "1 stk. frisk frugt", "energy": 230, "protein": 1 },
+        { "id": 43, "cat": "dinner", "name": "1 stk. frisk frugt", "energy": 230, "protein": 1 },
+        { "id": 42, "cat": "dinner", "name": "1 port. dessert", "energy": 1300, "protein": 7 },
+        { "id": 69, "cat": "drink", "name": "175 ml. kakaoskummetmælk", "energy": 420, "protein": 6 }
     ]},
     {
       "recID": 2,

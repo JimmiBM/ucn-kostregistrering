@@ -102,6 +102,6 @@
         { "cat": "drink", "name": "SmofKaniven central", "quantity": "100", "quantityType": "ml.", "energy": "460", "protein": "5,0" },
         { "cat": "drink", "name": "SmofKaniven perifer", "quantity": "100", "quantityType": "ml.", "energy": "300", "protein": "3,0" },
         { "cat": "drink", "name": "Glukose 10%", "quantity": "500", "quantityType": "ml.", "energy": "840", "protein": "0" },
-        { "cat": "drink", "name": "NaCl", "quantity": "-", "quantityType": "-", "energy": "-", "protein": "-" }
+        { "cat": "drink", "name": "NaCl", "quantity": "-", "quantityType": "-", "energy": "0", "protein": "0" }
     ]
 }
